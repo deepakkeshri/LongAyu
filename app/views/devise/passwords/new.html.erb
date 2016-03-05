@@ -1,0 +1,31 @@
+<div class="conatiner" style="color:#ff0000 ;  padding:40px; margin:0px">
+	<div class="col-md-1 offset2" >
+	</div>
+	
+	<div class="col-md-4 offset2">
+		<h2>Forgot your password?</h2>
+			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  				<%= devise_error_messages! %>
+					<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+						<table>
+							<div class="field">
+							    <%= f.label :email %><br />
+							    <%= f.email_field :email, autofocus: true %>
+						    </div>
+						    <div class="actions">
+						        <%= f.submit "Send me reset password instructions" %>
+						    </div>
+						</table>
+					</div>
+				<% end %>
+			</div>		
+		</div>	
+
+
+
+
+
+
+
+  
+

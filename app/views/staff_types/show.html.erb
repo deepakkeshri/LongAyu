@@ -1,0 +1,12 @@
+<p>
+  <strong>Name:</strong>
+  <%= @staff_type.name %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @staff_type.description %>
+</p>
+<%= link_to 'Back', staff_types_path %>
+<%= link_to "Edit", edit_staff_type_path(@staff_type) %>
+<%= link_to 'Delete', staff_type_path(@staff_type),method: :delete,data: { confirm: 'Are you sure?'}%>

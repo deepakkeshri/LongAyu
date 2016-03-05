@@ -1,0 +1,66 @@
+<div class="row" style="color:#ff0000 ; background:#aacccc ; padding:50px; margin:0px;" %>
+	<%= link_to '<<Back', :back %>
+	<div class="col-md-1 offset2">
+	</div>
+	<h2> Service</h2>
+	
+	<% if @service.errors.any? %>
+	  	<div id="error_explanation">
+	    	<h2><%= pluralize(@service.errors.count, "error") %> prohibited from being saved:</h2>
+	    	<ul>
+	    		<% @service.errors.full_messages.each do |msg| %>
+	      			<li><%= msg %></li>
+	    		<% end %>
+	    	</ul>
+	  	</div>
+  	<% end %>
+		
+	<div class="col-md-4 offset2">
+		<%= form_for @service do |f| %>
+			<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+				<table>
+					<em>fields marked with (*) are cumpulsory</em>
+					<h3>Details</h3></br>
+					<% if current_account.has_role? 'branch' %>
+                        <%= f.label :branch, class: 'required' %>
+					 	<%= f.collection_select :centre_id, [current_account.centre],:id,:name, disabled: true %>
+					<% else%>
+                        <%= f.label :branch, class: 'required' %>
+					  	<%= f.collection_select :centre_id, current_account.centre.centres.order(:name),:id,:name, :prompt=> "Select" %><br>
+					<% end %>
+                  <br>
+					
+					<%= f.label :service_type , class: 'required' %>
+					<%= f.collection_select :service_type_id, ServiceType.order(:name),:id,:name, prompt: "Select" %><br>
+					
+					<%= f.label :name , class: 'required'%><br>
+					<%= f.text_field :name %><br>
+					
+					<%= f.label :price , class: 'required'%><br>
+					<%= f.number_field :price %><br>
+					
+					<%= f.label :tax , class: 'required'%><br>
+					<%= f.number_field :tax %><br>
+					
+					<%= f.label :dd_price %><br>
+					<%= f.number_field :dd_price %><br>
+					
+					<%= f.label :dd_tax %><br>
+					<%= f.number_field :dd_tax %><br>
+					
+					<%= f.label :doctor_fee , class: 'required'%><br>
+					<%= f.number_field :doctor_fee %><br>
+					
+					<%= f.label :anesthesia_price, class: 'required' %><br>
+					<%= f.number_field :anesthesia_price %><br>
+					
+					<%= f.label :timing %><br>
+					<%= f.time_select :start_time,ampm: true %>to
+					<%= f.time_select :end_time ,ampm: true%><br>
+					
+					<%= f.submit %>
+				</table>
+			</div>
+		<% end %>
+	</div>
+</div>

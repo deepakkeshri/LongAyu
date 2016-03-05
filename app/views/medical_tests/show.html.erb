@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @medical_test.name %>
+</p>
+
+<p>
+  <strong>Short name:</strong>
+  <%= @medical_test.short_name %>
+</p>
+
+<p>
+  <strong>Alt name:</strong>
+  <%= @medical_test.alt_name %>
+</p>
+
+<%= link_to 'Edit', edit_medical_test_path(@medical_test) %> |
+<%= link_to 'Back', medical_tests_path %>

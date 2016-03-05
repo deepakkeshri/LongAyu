@@ -1,0 +1,8 @@
+class CreatePostalcodes < ActiveRecord::Migration
+  def change
+    create_table :postalcodes do |t|
+      t.string :name
+      t.timestamps
+    end
+  end
+end

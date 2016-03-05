@@ -1,0 +1,31 @@
+<h1>Listing beauty_services</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Short name</th>
+      <th>Alt name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @beauty_services.each do |beauty_service| %>
+      <tr>
+        <td><%= beauty_service.name %></td>
+        <td><%= beauty_service.short_name %></td>
+        <td><%= beauty_service.alt_name %></td>
+        <td><%= beauty_service.description %></td>
+        <td><%= link_to 'Show', beauty_service %></td>
+        <td><%= link_to 'Edit', edit_beauty_service_path(beauty_service) %></td>
+        <td><%= link_to 'Destroy', beauty_service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Beauty service', new_beauty_service_path %>

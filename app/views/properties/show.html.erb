@@ -1,0 +1,93 @@
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:50px; margin:0px;" %>
+	<div class="col-md-1 offset2">
+	</div>
+		<div class="col-md-4 offset2">
+				<div class="row" style="color:#ff0000 ; background:#8899cc ; padding:20px; margin:0px;" %>
+					<table>
+						<h3>Profile Details</h3></br>
+						<p>
+						  <strong>Name </strong>
+						  <%= @property.name %>
+						</p>
+						
+						<p>
+						  <strong>Website </strong>
+						  <%= @property.website %>
+						</p>
+						
+						<p>
+						  <strong>Language </strong>
+						  <%= @property.language %>
+						</p>
+						
+						<p>
+						  <strong>Timezone </strong>
+						  <%= @property.timezone %>
+						</p>
+					</table>
+				</div>
+				<div class="row" style="color:#ff0000 ; background:#889955 ; padding:20px; margin:0px;" %>
+					<table>
+						<h3>Location Details</h3></br>
+						<p>
+						  <strong>Secondary Email:</strong>
+						  <%= @property.secondary_email %>
+						</p>
+						
+						<p>
+						  <strong>Secondary Mobile:</strong>
+						  <%= @property.secondary_mobile %>
+						</p>
+						
+						<p>
+						  <strong>Address:</strong>
+						  <%= @property.address_line1 %>,
+						  <%= @property.address_line2 %>
+						</p>
+						
+						<p>
+						  <strong>Landmark:</strong>
+						  <%= @property.landmark %>
+						</p>
+						
+						<p>
+						  <strong>City:</strong>
+						  <%= @property.city %>
+						</p>
+						
+						<p>
+						  <strong>State:</strong>
+						  <%= @property.state %>
+						</p>
+						
+						<p>
+						  <strong>Country:</strong>
+						  <%= @property.country %>
+						</p>
+					</table>
+				</div>
+				
+				<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+					<table >
+						<h3>Login Details</h3></br>	
+						<p>
+						  <strong>Mobile:</strong>
+						  <%= @property.country_mobile_code %>-
+						  <%= @property.account.mobile%>
+						</p>
+						
+						<p>
+						  <strong>Email:</strong>
+						  <%= @property.account.email %>
+						</p>
+					</table>
+				</div>
+				
+				<div>
+					<% if can? :edit, Property %>
+						<%= link_to "Edit", edit_property_path(@property) %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+

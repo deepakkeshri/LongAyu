@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @beauty_service.name %>
+</p>
+
+<p>
+  <strong>Short name:</strong>
+  <%= @beauty_service.short_name %>
+</p>
+
+<p>
+  <strong>Alt name:</strong>
+  <%= @beauty_service.alt_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @beauty_service.description %>
+</p>
+
+<%= link_to 'Edit', edit_beauty_service_path(@beauty_service) %> |
+<%= link_to 'Back', beauty_services_path %>

@@ -1,0 +1,85 @@
+<%= form_for(@premise) do |f| %>
+  <% if @premise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@premise.errors.count, "error") %> prohibited this premise from being saved:</h2>
+
+      <ul>
+      <% @premise.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :parking %><br>
+    <%= f.check_box :parking %>
+  </div>
+  <div class="field">
+    <%= f.label :parking_description %><br>
+    <%= f.text_area :parking_description %>
+  </div>
+  <div class="field">
+    <%= f.label :accessible_to_disabled %><br>
+    <%= f.check_box :accessible_to_disabled %>
+  </div>
+  <div class="field">
+    <%= f.label :accessible_to_disabled_description %><br>
+    <%= f.text_area :accessible_to_disabled_description %>
+  </div>
+  <div class="field">
+    <%= f.label :public_transport_access %><br>
+    <%= f.check_box :public_transport_access %>
+  </div>
+  <div class="field">
+    <%= f.label :public_transport_access_description %><br>
+    <%= f.text_area :public_transport_access_description %>
+  </div>
+  <div class="field">
+    <%= f.label :access_without_steps %><br>
+    <%= f.check_box :access_without_steps %>
+  </div>
+  <div class="field">
+    <%= f.label :access_without_steps_description %><br>
+    <%= f.text_area :access_without_steps_description %>
+  </div>
+  <div class="field">
+    <%= f.label :disabled_parking %><br>
+    <%= f.check_box :disabled_parking %>
+  </div>
+  <div class="field">
+    <%= f.label :disabled_parking_description %><br>
+    <%= f.text_area :disabled_parking_description %>
+  </div>
+  <div class="field">
+    <%= f.label :patient_bathroom %><br>
+    <%= f.check_box :patient_bathroom %>
+  </div>
+  <div class="field">
+    <%= f.label :patient_bathroom_description %><br>
+    <%= f.text_area :patient_bathroom_description %>
+  </div>
+  <div class="field">
+    <%= f.label :wireless_access %><br>
+    <%= f.check_box :wireless_access %>
+  </div>
+  <div class="field">
+    <%= f.label :wireless_access_description %><br>
+    <%= f.text_area :wireless_access_description %>
+  </div>
+  <div class="field">
+    <%= f.label :onsite_pharmacy %><br>
+    <%= f.check_box :onsite_pharmacy %>
+  </div>
+  <div class="field">
+    <%= f.label :onsite_pharmacy_description %><br>
+    <%= f.text_area :onsite_pharmacy_description %>
+  </div>
+  <div class="field">
+    <%= f.label :centre_id %><br>
+    <%= f.number_field :centre_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

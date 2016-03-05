@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  centre_id: 1
+  international_trael_friendly: false
+  international_travel_friendly_description: MyText
+  local_travel_friendly: false
+  local_travel_friendly_description: MyText
+  traveller_accomodation_friendly: false
+  traveller_accomodation_friendly_description: MyText
+  local_guide: false
+  local_guide_description: MyText
+  tour_and_vacation_services: false
+  tour_and_vacation_services_description: MyText
+  pickup_from_hotel: false
+  pickup_from_hotel_decription: MyText
+  pickup_from_airport: false
+  pickup_from_airport_description: MyText
+
+two:
+  centre_id: 1
+  international_trael_friendly: false
+  international_travel_friendly_description: MyText
+  local_travel_friendly: false
+  local_travel_friendly_description: MyText
+  traveller_accomodation_friendly: false
+  traveller_accomodation_friendly_description: MyText
+  local_guide: false
+  local_guide_description: MyText
+  tour_and_vacation_services: false
+  tour_and_vacation_services_description: MyText
+  pickup_from_hotel: false
+  pickup_from_hotel_decription: MyText
+  pickup_from_airport: false
+  pickup_from_airport_description: MyText

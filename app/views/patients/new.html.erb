@@ -1,0 +1,44 @@
+<h2>Sign Up</h2>
+
+<% resource.build_patient %>
+<%= form_for(resource, as: resource_name, url: registrations_create_path) do |f| %>
+  
+  <ul>
+    <%= f.fields_for :patient do |p| %>
+      <li>
+        <%= p.label :first_name %>
+        <%= p.text_field :first_name %>
+      </li>
+    <% end %>
+  </ul>
+  
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :mobile %><br />
+    <%= f.text_field :mobile, autofocus: true %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create Account" %>
+  </div>
+  <%= render :partial => "devise/shared/links" %>
+<% end %>

@@ -1,0 +1,33 @@
+<p>
+  <strong>Email:</strong>
+  <%= @patient.account.email %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @patient.account.mobile %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @patient.title %>
+  <%= @patient.first_name %>
+  <%= @patient.last_name %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @patient.gender %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @patient.address_line1 %>
+  <%= @patient.address_line2 %>
+  <%= @patient.address_line3 %>
+</p>
+<%= link_to 'Back', patients_path %>
+<%= link_to "Edit", edit_patient_path(@patient) %>
+<% if can? :destroy, Patient%>
+	<%= link_to 'Delete', patient_path(@patient),method: :delete,data: { confirm: 'Are you sure?'}%>
+<% end %>

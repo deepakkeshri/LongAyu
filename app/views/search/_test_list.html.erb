@@ -1,0 +1,179 @@
+<script>
+    $(document).ready(function() {
+        $("#multiple").select2({
+            minimumInputLength: 1,
+            formatInputTooShort: function () {
+                return '';
+            }
+        })
+        $("#city-select").select2()
+        $("#pincode-select").select2()
+
+    })
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+
+    });
+</script>
+<div>
+
+	<table class="table ">
+
+		<tbody>
+<%if @centres!=[]%>
+            <% @centres.each do |lab| %>
+            <tr>
+              <td>
+                <div class="panel panel-info">
+                  <div class="panel-heading small">
+                    <h6 class="panel-title">
+                      <span><%=lab.name%></span>
+                      <small><span class="badge bg-primary"><%= lab.distance_from(@location).round(2) %> km</span></small>
+                      <div class="rating pull-right">
+                        <small>Rating <span class="badge bg-light">4/5</span></small>
+                        <div class='ratingThree'>
+                        </div>
+                      </div>
+                    </h6>
+
+                  </div>
+                  <div class="panel-body text-primary">
+                  <div class="labLogo col-sm-3 col-xs-12">
+
+                    <%= image_tag('images.jpeg',:height=>'100',:width=>'80',:alt => 'Lab Logo') %>
+
+
+
+                    <div>
+                      <div class="timing">
+                        <strong data-toggle='tooltip' title="daily timing">
+                          <i class="icon-time"></i>
+                          <%if lab.open_time and lab.close_time%>
+                              <%= lab.open_time.strftime("%I:%M%p") +'-' + lab.close_time.strftime("%I:%M%p") %>
+                          <%else%>
+                              9AM-6PM
+                          <%end%>
+                        </strong>
+                        <ul class="list-inline">
+                          <% if lab.close_day and lab.close_day.include? 'sun' %>
+                              <li data-toggle='tooltip' title="remain close on sunday" class="label label-danger">S</li>
+                          <% else %>
+                              <li data-toggle='tooltip' title="remain open on sunday" class="label label-success">S</li>
+                          <% end %>
+                          <% if lab.close_day and lab.close_day.include? 'mon' %>
+                              <li data-toggle='tooltip' title="remain close on monday" class="label label-danger">M</li>
+                          <% else %>
+                              <li data-toggle='tooltip' title="remain open on monday" class="label label-success">M</li>
+                          <% end %>
+                          <% if lab.close_day and lab.close_day.include? 'tue' %>
+                              <li data-toggle='tooltip' title="remain close on tuesday" class="label label-danger">T</li>
+                          <% else %>
+                              <li data-toggle='tooltip' title="remain open on tuesday" class="label label-success">T</li>
+                          <% end %>
+                          <% if lab.close_day and lab.close_day.include? 'wed' %>
+                              <li data-toggle='tooltip' title="remain close on wednesday" class="label label-danger">W</li>
+                          <% else %>
+                              <li data-toggle='tooltip' title="remain open on wednesday" class="label label-success">W</li>
+                          <% end %>
+                          <% if lab.close_day and lab.close_day.include? 'thu' %>
+                              <li data-toggle='tooltip' title="remain close on thursday" class="label label-danger">T</li>
+                          <% else %>
+                              <li data-toggle='tooltip' title="remain open on thursday" class="label label-success">T</li>
+                          <% end %>
+                          <% if lab.close_day and lab.close_day.include? 'fri' %>
+                              <li data-toggle='tooltip' title="remain close on friday" class="label label-danger">F</li>
+                          <% else %>
+                              <li data-toggle='tooltip' title="remain open on friday" class="label label-success">F</li>
+                          <% end %>
+                          <% if lab.close_day and lab.close_day.include? 'sat' %>
+                              <li data-toggle='tooltip' title="remain close on saturday" class="label label-danger">S</li>
+                          <% else %>
+                              <li data-toggle='tooltip' title="remain open on saturday" class="label label-success">S</li>
+                          <% end %>
+
+                      </ul>
+
+                      </div>
+
+                      <div>
+                        All Test Available
+                      </div>
+                      <a href="<%= centre_path(lab) %>" data-toggle='tooltip' title="<%= lab.name%>">
+                        <strong>Details</strong></a>
+                    </div>
+                  </div>
+                    <div class="labdetails">
+                    <div class="address col-sm-3 col-xs-12">
+                      <div>
+                        Address</div>
+                      <ul class="list-unstyled">
+                        <li><span class="iconAddress"></span>
+
+                          <label>
+                            <%= address(lab)%></label>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="service col-sm-3 col-xs-12">
+
+                    </div>
+                    <div class="discount col-sm-3 col-xs-12">
+                      <div>
+                        <b>Discount Detail</b></div>
+                      <ul class="list-unstyled">
+                        <li>
+                          <% price = price(lab,@test_ids,@search_type)%>
+                          <div class="lable">
+                            Price<span class="price pull-right">
+                            <i class="icon-rupee"></i> <%=price[0]%></span></div>
+
+
+                        </li>
+                        <li><div>
+                          Discount <span class="badge bg-success"><%=price[1]%></span>
+                          <span class="price pull-right"><i class="icon-rupee"></i> <%=price[2]%></span></div>
+                        </li>
+                        <li style="border-top: 1px solid #CCC">
+                          <div >
+                            Payable<strong>
+                            <span class="price pull-right"><i class="icon-rupee"></i> <%=price[0]-price[2]%></span></strong></div>
+
+
+                        </li>
+                      </ul>
+
+
+                      <a class="btn btn-primary">
+                        Book</a>
+                    </div>
+                    <div class="clear">
+                    </div>
+
+                    <div class="clear">
+                    </div>
+                    <div>
+
+                        <div class="testAvail">
+
+
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </td>
+            </tr>
+
+        <% end %>
+
+            <%= js_will_paginate @centres, :params => { :my_excluded_param => nil } %>
+<% else %>
+<div class="col-sm-6 col-xs-12 label label-danger">Labs with all of test above don't available</div><div class="col-sm-6 col-xs-12 label label-success">please try with different combination</div>
+            <% end %>
+		</tbody>
+
+	</table>
+
+</div>
+

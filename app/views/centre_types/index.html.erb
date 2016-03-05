@@ -1,0 +1,21 @@
+<%= link_to "Add Centre Type", new_centre_type_path %>
+<h1>Listing Centre Types</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+  </tr>
+ 
+  <% @centre_types.each do |centre_type| %>
+    <tr>
+      <td><%= centre_type.name %></td>
+      <td><%= centre_type.description %></td>
+      <td><%= link_to "Show", centre_type_path(centre_type) %>
+    	  <%= link_to "Edit", edit_centre_type_path(centre_type) %>
+    	  <%= link_to 'Delete', centre_type_path(centre_type), method: :delete,data: { confirm: 'Are you sure?'}%></td>
+    </tr>
+  
+  <% end %>
+</table>

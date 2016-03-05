@@ -1,0 +1,12 @@
+<p>
+  <strong>Name:</strong>
+  <%= @centre_type.name %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @centre_type.description %>
+</p>
+<%= link_to 'Back', centre_types_path %>
+<%= link_to "Edit", edit_centre_type_path(@centre_type) %>
+<%= link_to 'Delete', centre_type_path(@centre_type),method: :delete,data: { confirm: 'Are you sure?'}%>

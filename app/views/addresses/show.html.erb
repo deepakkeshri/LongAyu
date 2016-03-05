@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address1:</strong>
+  <%= @address.address1 %>
+</p>
+
+<p>
+  <strong>Address2:</strong>
+  <%= @address.address2 %>
+</p>
+
+<p>
+  <strong>Address3:</strong>
+  <%= @address.address3 %>
+</p>
+
+<p>
+  <strong>Landmark1:</strong>
+  <%= @address.landmark1 %>
+</p>
+
+<p>
+  <strong>Landmark2:</strong>
+  <%= @address.landmark2 %>
+</p>
+
+<p>
+  <strong>Landmark3:</strong>
+  <%= @address.landmark3 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @address.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @address.state %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @address.country %>
+</p>
+
+<p>
+  <strong>Pin:</strong>
+  <%= @address.pin %>
+</p>
+
+<p>
+  <strong>Addressable:</strong>
+  <%= @address.addressable_id %>
+</p>
+
+<p>
+  <strong>Addessable type:</strong>
+  <%= @address.addessable_type %>
+</p>
+
+<%= link_to 'Edit', edit_address_path(@address) %> |
+<%= link_to 'Back', addresses_path %>

@@ -1,0 +1,9 @@
+
+
+<%= render('staff_types/form')%>
+<%= link_to 'Back', staff_types_path %>
+
+<%= form_tag import_facility_types_path, enforce_utf8: true ,miultipart: true do |f| %>
+	<%= file_field_tag :file %>
+	<%= submit_tag "Import"%>
+<% end %>

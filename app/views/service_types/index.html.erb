@@ -1,0 +1,21 @@
+<%= link_to "Add Service Type", new_service_type_path %>
+<h1>Listing Service Types</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+  </tr>
+ 
+  <% @service_types.each do |service_type| %>
+    <tr>
+      <td><%= service_type.name %></td>
+      <td><%= service_type.description %></td>
+      <td><%= link_to "Show", service_type_path(service_type) %>
+    	  <%= link_to "Edit", edit_service_type_path(service_type) %>
+    	  <%= link_to 'Delete', service_type_path(service_type), method: :delete,data: { confirm: 'Are you sure?'}%></td>
+    </tr>
+  
+  <% end %>
+</table>

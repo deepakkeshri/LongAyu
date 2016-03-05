@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Centre:</strong>
+  <%= @patient_facility_insurance.centre_id %>
+</p>
+
+<p>
+  <strong>Without insurance accepted:</strong>
+  <%= @patient_facility_insurance.without_insurance_accepted %>
+</p>
+
+<p>
+  <strong>Without insurance accepted description:</strong>
+  <%= @patient_facility_insurance.without_insurance_accepted_description %>
+</p>
+
+<p>
+  <strong>Public insurance accepted:</strong>
+  <%= @patient_facility_insurance.public_insurance_accepted %>
+</p>
+
+<p>
+  <strong>Public insurance accepted description:</strong>
+  <%= @patient_facility_insurance.public_insurance_accepted_description %>
+</p>
+
+<p>
+  <strong>Private insurance accepted:</strong>
+  <%= @patient_facility_insurance.private_insurance_accepted %>
+</p>
+
+<p>
+  <strong>Private insurance accepted description:</strong>
+  <%= @patient_facility_insurance.private_insurance_accepted_description %>
+</p>
+
+<p>
+  <strong>With dental pain accepted:</strong>
+  <%= @patient_facility_insurance.with_dental_pain_accepted %>
+</p>
+
+<p>
+  <strong>With dental pain accepted description:</strong>
+  <%= @patient_facility_insurance.with_dental_pain_accepted_description %>
+</p>
+
+<%= link_to 'Edit', edit_patient_facility_insurance_path(@patient_facility_insurance) %> |
+<%= link_to 'Back', patient_facility_insurances_path %>

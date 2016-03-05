@@ -1,0 +1,47 @@
+<h1>Listing payment_infos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Currency</th>
+      <th>Cheque accept</th>
+      <th>Cheque accept description</th>
+      <th>Debit accept</th>
+      <th>Debit accept description</th>
+      <th>Credit accept</th>
+      <th>Credit accept description</th>
+      <th>Wallet accept</th>
+      <th>Wallet accept description</th>
+      <th>Cash accept</th>
+      <th>Cash accept description</th>
+      <th>Centre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_infos.each do |payment_info| %>
+      <tr>
+        <td><%= payment_info.currency %></td>
+        <td><%= payment_info.cheque_accept %></td>
+        <td><%= payment_info.cheque_accept_description %></td>
+        <td><%= payment_info.debit_accept %></td>
+        <td><%= payment_info.debit_accept_description %></td>
+        <td><%= payment_info.credit_accept %></td>
+        <td><%= payment_info.credit_accept_description %></td>
+        <td><%= payment_info.wallet_accept %></td>
+        <td><%= payment_info.wallet_accept_description %></td>
+        <td><%= payment_info.cash_accept %></td>
+        <td><%= payment_info.cash_accept_description %></td>
+        <td><%= payment_info.centre_id %></td>
+        <td><%= link_to 'Show', payment_info %></td>
+        <td><%= link_to 'Edit', edit_payment_info_path(payment_info) %></td>
+        <td><%= link_to 'Destroy', payment_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Payment info', new_payment_info_path %>

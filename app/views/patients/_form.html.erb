@@ -1,0 +1,154 @@
+
+<%= form_for @patient do |f| %>
+
+	<% if @patient.errors.any? %>
+  	<div id="error_explanation">
+    	<h2><%= pluralize(@patient.errors.count, "error") %> prohibited from being saved:</h2>
+    	<ul>
+    		<% @patient.errors.full_messages.each do |msg| %>
+      			<li><%= msg %></li>
+    		<% end %>
+    	</ul>
+  	</div>
+  	<% end %>
+
+    <p>
+      <%= f.label :photo %>
+        <%= f.file_field :photo %>
+
+    </p>
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.select :title, [['Mr.','Mr.'],['Mrs.','Mrs.']] %>
+    </div>
+  <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </p>
+ 
+  <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </p>
+    <p>
+      <%= f.label :email,"Secondary email" %><br>
+      <%= f.email_field :email %>
+    </p>
+       <p>
+      <%= f.label :qualification %><br>
+      <%= f.text_field :qualification %>
+    </p>
+
+    <p>
+      <%= f.label :address_line2 %><br>
+      <%= f.text_field :address_line2 %>
+    </p>
+
+
+
+    <p>
+      <%= f.label :mobile_contact_no %><br>
+      <%= f.collection_select :country_mobile_code_id, CountryMobileCode.order(:name),:id,:name %>
+      <%= f.telephone_field :mobile_contact_no %>
+    </p>
+
+    <p>
+      <%= f.label :home_contact_no %><br>
+      <%= f.telephone_field :home_contact_no %>
+    </p>
+
+    <p>
+      <%= f.label :landline_no %><br>
+      <%= f.telephone_field :landline_no %>
+    </p>
+
+    <p>
+      <%= f.label :work_contact_no %><br>
+      <%= f.telephone_field :work_contact_no %>
+    </p>
+
+    <p>
+      <%= f.label :fax_no %><br>
+      <%= f.telephone_field :fax_no %>
+    </p>
+
+    <p>
+      <%= f.label :address_line1 %><br>
+      <%= f.text_field :address_line1 %>
+    </p>
+
+    <p>
+      <%= f.label :address_line2 %><br>
+      <%= f.text_field :address_line2 %>
+    </p>
+
+    <p>
+      <%= f.label :address_line3 %><br>
+      <%= f.text_field :address_line3 %>
+    </p>
+
+    <p>
+      <%= f.label :country_id, "Country" %><br>
+      <%= f.collection_select :country_id, Country.order(:name),:id,:name, default: "Select" %>
+    </p>
+
+    <p>
+      <%= f.label :state_id, "State" %><br>
+      <%= f.collection_select :state_id, State.order(:name),:id,:name, default: "Select" %>
+    </p>
+
+    <p>
+      <%= f.label :city_id, "City" %><br>
+      <%= f.collection_select :city_id, City.order(:name),:id,:name, default: "Select" %>
+    </p>
+
+    <p>
+      <%= f.label :postal_code_id, "Postal Code" %><br>
+      <%= f.collection_select :postal_code_id, PostalCode.order(:code),:id,:code %>
+    </p>
+
+    <p>
+      <%= f.label :blood_group %><br>
+      <%= f.select :blood_group, [['O+','O+'],['A+','A+'],['B+','B+'],['AB+','AB+']] %>
+    </p>
+
+    <p>
+      <%= f.label :dob, "Date of birth" %>
+      <div class="input-append date"  data-date-format="dd-mm-yyyy" style="margin-bottom: 10px;">
+          <%= f.date_select :dob%>
+        </div>
+      </p>
+
+    <p>
+      <%= f.label :height %><br>
+      <%= f.text_field :height %>(cm)
+    </p>
+
+    <p>
+      <%= f.label :weight %><br>
+      <%= f.text_field :weight %>(Kg)
+    </p>
+
+    <p>
+      <%= f.label :gender %><br>
+      <%= f.select :gender, [['Male','Male'],['Female','Female']] %>
+    </p>
+
+    <p>
+      <%= f.label :language %><br>
+      <%= f.text_field :language %>
+    </p>
+
+    <p>
+      <%= f.label :allergies %><br>
+      <%= f.text_field :allergies %>
+    </p>
+    <div class="line line-dashed line-lg pull-in"></div>
+
+    <div class="form-actions ">
+      <%= f.submit "Update", :class=>"btn btn-primary"%>
+
+    </div>
+
+<% end %>

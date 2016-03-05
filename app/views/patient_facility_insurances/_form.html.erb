@@ -1,0 +1,53 @@
+<%= form_for(@patient_facility_insurance) do |f| %>
+  <% if @patient_facility_insurance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient_facility_insurance.errors.count, "error") %> prohibited this patient_facility_insurance from being saved:</h2>
+
+      <ul>
+      <% @patient_facility_insurance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :centre_id %><br>
+    <%= f.number_field :centre_id %>
+  </div>
+  <div class="field">
+    <%= f.label :without_insurance_accepted %><br>
+    <%= f.check_box :without_insurance_accepted %>
+  </div>
+  <div class="field">
+    <%= f.label :without_insurance_accepted_description %><br>
+    <%= f.text_area :without_insurance_accepted_description %>
+  </div>
+  <div class="field">
+    <%= f.label :public_insurance_accepted %><br>
+    <%= f.check_box :public_insurance_accepted %>
+  </div>
+  <div class="field">
+    <%= f.label :public_insurance_accepted_description %><br>
+    <%= f.text_area :public_insurance_accepted_description %>
+  </div>
+  <div class="field">
+    <%= f.label :private_insurance_accepted %><br>
+    <%= f.check_box :private_insurance_accepted %>
+  </div>
+  <div class="field">
+    <%= f.label :private_insurance_accepted_description %><br>
+    <%= f.text_area :private_insurance_accepted_description %>
+  </div>
+  <div class="field">
+    <%= f.label :with_dental_pain_accepted %><br>
+    <%= f.check_box :with_dental_pain_accepted %>
+  </div>
+  <div class="field">
+    <%= f.label :with_dental_pain_accepted_description %><br>
+    <%= f.text_area :with_dental_pain_accepted_description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

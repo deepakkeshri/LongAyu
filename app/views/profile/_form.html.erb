@@ -1,0 +1,148 @@
+<script>
+    $(document).ready(function() {
+        $("#select-input").select2()
+
+    })
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+<%= link_to '<<Back', :back,:class => 'btn btn-primary' %>
+
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:50px; margin:0px;" %>
+	<div class="col-md-1 offset2">
+	</div>
+	<h2>Edit Branch Details</h2>
+
+	<% if @centre.errors.any? %>
+  	<div id="error_explanation">
+    	<h2><%= pluralize(@centre.errors.count, "error") %> prohibited from being saved:</h2>
+    	<ul>
+    		<% @centre.errors.full_messages.each do |msg| %>
+      			<li><%= msg %></li>
+    		<% end %>
+    	</ul>
+  	</div>
+  	<% end %>
+  	
+  	<div class="col-md-6 offset2">
+		<%= form_for @centre do |f| %>
+			<div class="row" style="color:#ff0000 ; background:#8899cc ; padding:20px; margin:0px;" %>
+				<table>
+					<h3>Profile Details</h3></br>
+
+					  <p>
+					    <%= f.label :name %><br>
+					    <%= f.text_field :name %>
+					  </p>
+					 
+					  <p>
+                      			  	<%= f.label :centre_type %></br>
+						<%= f.collection_select :centre_type_id, CentreType.order(:name),:id,:name, default: "Select" %>
+					  </p>
+					  
+					  <p>
+					    <%= f.label :company %><br>
+					    <%= f.text_field :company %>
+					  </p>
+					  
+					  <p>
+					    <%= f.label :website %><br>
+					    <%= f.url_field :website %>
+					  </p>
+					  
+					  <p>
+					    <%= f.label :employee_count %><br>
+					    <%= f.collection_select :employee_count, MessageType.find_by_name('Employee_count').messages.order(:name),:name,:name , :prompt=> "Select"%>
+					  </p>
+					 
+					  <p>
+					  	<%= f.label :minimum_consultancy_fee %></br>
+					  	<%= f.collection_select :currency, Country.order(:name),:currency,:currency , :prompt=> "Select"%>
+					    <%= f.text_field :minimum_consultancy_fee %>
+					  </p>
+					  
+					  <p>
+					    <%= f.label :close_day %><br>
+					    <%= f.select :close_day, options_for_select([['Sunday','Sunday'],['Monday','Monday'],['Tuesday','Tuesday'],['Wednesday','Wednesday'],['Thursday','Thursday'],['Friday','Friday'],['Saturday','Saturday']]) %>
+					  </p>
+					  
+					  <p>
+					    <%= f.label :clinic_timing %><br>
+					    <%= f.time_select :open_time, ampm: true%> to <%= f.time_select :close_time, ampm: true %>
+					  </p>
+					  
+					  <p>
+					    <%= f.label :lunch_time %><br>
+					    <%= f.time_select :lunch_start_time , ampm: true%> to <%= f.time_select :lunch_end_time, ampm: true %>
+					  </p>
+					  
+				</table>
+			</div>
+
+			<div class="row" style="color:#ff0000 ; background:#889955 ; padding:20px; margin:0px;" %>
+				<table>
+					<h3>Location Details</h3></br>
+
+					  <p>
+					    <%= f.label :secondary_email %><br>
+					    <%= f.email_field :secondary_email %>
+					  </p>
+					  
+					  	<%= f.label :mobile,'Secondary Mobile' %></br>
+		    			<%= f.collection_select :country_mobile_code, Country.order(:name),:mobile_code,:mobile_code , :prompt=> "Select"%>
+		    			<%= f.telephone_field :secondary_mobile %></br>
+					
+					  <p>
+					    <%= f.label :address_line1 %><br>
+					    <%= f.text_field :address_line1 %>
+					  </p>
+					 
+					 <p>
+					    <%= f.label :address_line2 %><br>
+					    <%= f.text_field :address_line2 %>
+					  </p>
+					  
+					  <p>
+					    <%= f.label :address_line3 %><br>
+					    <%= f.text_field :address_line3 %>
+					  </p>
+					  
+					  <p>
+					    <%= f.label :landmark1 %><br>
+					    <%= f.text_field :landmark1 %>
+					  </p>
+					  
+					  <p>
+					    <%= f.label :landmark2 %><br>
+					    <%= f.text_field :landmark2 %>
+					  </p>
+					  
+					  <p>
+					    <%= f.label :landmark3 %><br>
+					    <%= f.text_field :landmark3 %>
+					  </p>
+					  
+					  <p>
+					    <%= f.label :pincode %>
+					    <%= f.collection_select :pincode, Postalcode.order(:name),:name,:name, :prompt=> "Select" %>
+					
+					    <%= f.label :city %>
+					    <%= f.collection_select :city, City.order(:name),:name,:name, :prompt=> "Select" %>
+					  
+					    <%= f.label :state %>
+					    <%= f.collection_select :state, State.order(:name),:name,:name, :prompt=> "Select"%>
+					 
+					    <%= f.label :country %>
+					    <%= f.collection_select :country, Country.order(:name),:name,:name, :prompt=> "Select"%>
+					  </p>
+				</table>
+			</div>
+			<p>
+		    <%= f.submit %>
+		  </p>
+		<% end %>
+	</div>
+</div>
+

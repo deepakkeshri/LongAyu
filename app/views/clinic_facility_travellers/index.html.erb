@@ -1,0 +1,53 @@
+<h1>Listing clinic_facility_travellers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Centre</th>
+      <th>International trael friendly</th>
+      <th>International travel friendly description</th>
+      <th>Local travel friendly</th>
+      <th>Local travel friendly description</th>
+      <th>Traveller accomodation friendly</th>
+      <th>Traveller accomodation friendly description</th>
+      <th>Local guide</th>
+      <th>Local guide description</th>
+      <th>Tour and vacation services</th>
+      <th>Tour and vacation services description</th>
+      <th>Pickup from hotel</th>
+      <th>Pickup from hotel decription</th>
+      <th>Pickup from airport</th>
+      <th>Pickup from airport description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clinic_facility_travellers.each do |clinic_facility_traveller| %>
+      <tr>
+        <td><%= clinic_facility_traveller.centre_id %></td>
+        <td><%= clinic_facility_traveller.international_trael_friendly %></td>
+        <td><%= clinic_facility_traveller.international_travel_friendly_description %></td>
+        <td><%= clinic_facility_traveller.local_travel_friendly %></td>
+        <td><%= clinic_facility_traveller.local_travel_friendly_description %></td>
+        <td><%= clinic_facility_traveller.traveller_accomodation_friendly %></td>
+        <td><%= clinic_facility_traveller.traveller_accomodation_friendly_description %></td>
+        <td><%= clinic_facility_traveller.local_guide %></td>
+        <td><%= clinic_facility_traveller.local_guide_description %></td>
+        <td><%= clinic_facility_traveller.tour_and_vacation_services %></td>
+        <td><%= clinic_facility_traveller.tour_and_vacation_services_description %></td>
+        <td><%= clinic_facility_traveller.pickup_from_hotel %></td>
+        <td><%= clinic_facility_traveller.pickup_from_hotel_decription %></td>
+        <td><%= clinic_facility_traveller.pickup_from_airport %></td>
+        <td><%= clinic_facility_traveller.pickup_from_airport_description %></td>
+        <td><%= link_to 'Show', clinic_facility_traveller %></td>
+        <td><%= link_to 'Edit', edit_clinic_facility_traveller_path(clinic_facility_traveller) %></td>
+        <td><%= link_to 'Destroy', clinic_facility_traveller, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Clinic facility traveller', new_clinic_facility_traveller_path %>

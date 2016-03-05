@@ -1,0 +1,2 @@
+module ClinicFacilityTravellersHelper
+end

@@ -1,0 +1,41 @@
+<h2>Personal Details</h2>
+<%= form_for @staff do |f| %>
+
+	<% if @staff.errors.any? %>
+  	<div id="error_explanation">
+    	<h2><%= pluralize(@staff.errors.count, "error") %> prohibited from being saved:</h2>
+    	<ul>
+    		<% @staff.errors.full_messages.each do |msg| %>
+      			<li><%= msg %></li>
+    		<% end %>
+    	</ul>
+  	</div>
+  	<% end %>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.select :title,options_for_select([['Mr.','Mr.'],['Ms.','Ms.']]) %>
+  </p>
+
+  <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </p>
+ 
+  <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </p>
+  
+  <p>
+    <%= f.label :gender %>
+    <%= f.label :male %>
+    <%= f.radio_button :gender,"Male" %>
+    <%= f.label :female %>
+    <%= f.radio_button :gender,"Male" %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

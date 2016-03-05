@@ -1,0 +1,144 @@
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:50px; margin:0px;" %>
+	<div class="col-md-1 offset2">
+	</div>
+	<h3>Branch Details</h3></br>
+	<div class="col-md-4 offset2">
+		<div class="row" style="color:#ff0000 ; background:#8899cc ; padding:20px; margin:0px;" %>
+			<table>
+				<h3>Profile</h3></br>
+				<p>
+				  <strong>Name:</strong>
+				  <%= @centre.name %>
+				</p>
+				
+				<p>
+				  <strong>CentreType:</strong>
+				  <%= @centre.centre_type.name %>
+				</p>
+				
+				<p>
+				  <strong>Company:</strong>
+				  <%= @centre.company %>
+				</p>
+				
+				<p>
+				  <strong>Website:</strong>
+				  <%= @centre.website %>
+				</p>
+				
+				<p>
+				  <strong>No of Employees:</strong>
+				  <%= @centre.employee_count %>
+				</p>
+				
+				<strong> Minimum_consultancy_fee </strong>
+				<%= @centre.currency %>
+				<%= @centre.minimum_consultancy_fee %><br>
+				
+				<p>
+				  <strong>Closed Day:</strong>
+				  <%= @centre.close_day %>
+				</p>
+
+				<% if @centre.open_time %>
+				<p>
+				  <strong>Clinic Timing:</strong>
+				  <%= @centre.open_time.strftime("%H.%M") %> to 
+				  <%= @centre.close_time.strftime("%H.%M") if @centre.close_time%>
+				</p>
+                <%end%>
+
+				<%if @centre.lunch_start_time%>
+				<p>
+				  <strong>Lunch Timing:</strong>
+				  <%= @centre.lunch_start_time.strftime("%H.%M") %> to
+				  <%= @centre.lunch_end_time.strftime("%H.%M") if @centre.lunch_end_time%>
+				</p>
+				<%end%>
+			</table>
+		</div>
+		
+		<div class="row" style="color:#ff0000 ; background:#889955 ; padding:20px; margin:0px;" %>
+			<table>
+				<h3>Location</h3></br>
+				<p>
+				  <strong>Email:</strong>
+				  <%= @centre.account.email %>
+				</p>
+				
+				<p>
+				  <strong>Secondary Email:</strong>
+				  <%= @centre.secondary_email %>
+				</p>
+				
+				<p>
+				  <strong>Secondary Mobile:</strong>
+				  <%= @centre.secondary_mobile %>
+				</p>
+				
+				<p>
+				  <strong>Address:</strong>
+				  <%= @centre.address_line1 %>
+				  <%= @centre.address_line2 %>
+				  <%= @centre.address_line3 %>
+				</p>
+				
+				<p>
+				  <strong>Landmark</strong>
+				  <%= @centre.landmark1 %>
+				  <%= @centre.landmark2 %>
+				  <%= @centre.landmark3 %>
+				</p>
+				
+				<p>
+				  <strong>Pincode:</strong>
+				  <%= @centre.pincode %>
+				</p>
+				
+				<p>
+				  <strong>City:</strong>
+				  <%= @centre.city %>
+				</p>
+				
+				<p>
+				  <strong>State:</strong>
+				  <%= @centre.state %>
+				</p>
+				
+				<p>
+				  <strong>Country:</strong>
+				  <%= @centre.country %>
+				</p>
+			</table>
+		</div>
+		
+		<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+			<table >
+				<h3>Login Details</h3></br>	
+				<p>
+				  <strong>Mobile:</strong>
+				  <%= @centre.country_mobile_code %>-
+				  <%= @centre.account.mobile%>
+				</p>
+				
+				<p>
+				  <strong>Email:</strong>
+				  <%= @centre.account.email %>
+				</p>
+			</table>
+		</div>
+		
+		<% if can? :edit, Centre %>
+			<%= link_to "Edit", edit_centre_path(@centre) %>
+		<% end %>
+		<% if can? :destroy, Centre %>
+    	  	<%= link_to 'Delete', centre_path(@centre), method: :delete,data: { confirm: 'Are you sure?'}%>
+    	<% end %><br>
+		<% if can? :show, Service %>
+    	  	<%= link_to "Services", branch_services_path(@centre) %>
+    	<% end %>
+    	<% if can? :show, Facility %>
+    	  	<%= link_to 'Facilities', branch_facilities_path(@centre)%>
+    	<% end %><br>
+	</div>
+</div>

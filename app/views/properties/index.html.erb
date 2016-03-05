@@ -1,0 +1,43 @@
+<% if can? :create, Property %>
+<%= link_to "Add Property", property_sign_up_path%>
+<% end %>
+<h1>Listing Properties</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th></th>
+  </tr>
+ 
+  <% @properties.each do |property| %>
+    <tr>
+      <td><%= property.name %></td>
+      <td><%= property.account.email %></td>
+      <td><%= property.account.mobile %></td>
+      <td>
+      	<% if can? :show, Property %>
+      		<%= link_to "Show", property_path(property) %>
+      	<% end %>
+      	<% if can? :edit, Property %>
+    	  	<%= link_to "Edit", edit_property_path(property) %>
+    	<% end %>
+    	<% if can? :destroy, Property %>
+    	    <%= link_to 'Delete', property_path(property), method: :delete,data: { confirm: 'Are you sure?'}%>
+    	<% end %>
+    	<% if can? :read, Centre %>
+			<%= link_to "Branches", centres_path %>
+		<% end %>
+		<% if can? :read, Service %>
+			<%= link_to "Services", services_path %>
+		<% end %>
+		<% if can? :read, Staff %>	
+			<%= link_to "Staffs", staffs_path %>
+		<% end %>
+		
+    	</td>
+    </tr>
+  
+  <% end %>
+</table>

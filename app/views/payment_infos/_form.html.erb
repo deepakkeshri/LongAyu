@@ -1,0 +1,65 @@
+<%= form_for(@payment_info) do |f| %>
+  <% if @payment_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payment_info.errors.count, "error") %> prohibited this payment_info from being saved:</h2>
+
+      <ul>
+      <% @payment_info.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :currency %><br>
+    <%= f.text_field :currency %>
+  </div>
+  <div class="field">
+    <%= f.label :cheque_accept %><br>
+    <%= f.check_box :cheque_accept %>
+  </div>
+  <div class="field">
+    <%= f.label :cheque_accept_description %><br>
+    <%= f.text_area :cheque_accept_description %>
+  </div>
+  <div class="field">
+    <%= f.label :debit_accept %><br>
+    <%= f.check_box :debit_accept %>
+  </div>
+  <div class="field">
+    <%= f.label :debit_accept_description %><br>
+    <%= f.text_area :debit_accept_description %>
+  </div>
+  <div class="field">
+    <%= f.label :credit_accept %><br>
+    <%= f.check_box :credit_accept %>
+  </div>
+  <div class="field">
+    <%= f.label :credit_accept_description %><br>
+    <%= f.text_area :credit_accept_description %>
+  </div>
+  <div class="field">
+    <%= f.label :wallet_accept %><br>
+    <%= f.check_box :wallet_accept %>
+  </div>
+  <div class="field">
+    <%= f.label :wallet_accept_description %><br>
+    <%= f.text_area :wallet_accept_description %>
+  </div>
+  <div class="field">
+    <%= f.label :cash_accept %><br>
+    <%= f.check_box :cash_accept %>
+  </div>
+  <div class="field">
+    <%= f.label :cash_accept_description %><br>
+    <%= f.text_area :cash_accept_description %>
+  </div>
+  <div class="field">
+    <%= f.label :centre_id %><br>
+    <%= f.number_field :centre_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

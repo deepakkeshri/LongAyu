@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>LongAyu</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application',media: 'all', 'data-turbolinks-track' => true%>
+	<%= csrf_meta_tags %>
+	<%= render('layouts/header1')%>
+</head>
+
+<body>
+	<div class="conatiner" style="color:#ff0000 ; background:#cccccc ; padding:20px; margin-left:0px " %>
+		<div class="flash-msg" style="margin-top: 10px">
+        	<%= render 'layouts/messages' %>
+      	</div>
+	
+        	<%= render 'profile/index' %>
+		<div class="row">
+			<%= yield %>
+		</div>
+	</div>
+</body>
+<%= render('layouts/footer')%>
+</html>

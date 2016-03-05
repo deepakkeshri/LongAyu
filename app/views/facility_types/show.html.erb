@@ -1,0 +1,12 @@
+<p>
+  <strong>Name:</strong>
+  <%= @facility_type.name %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @facility_type.description %>
+</p>
+<%= link_to 'Back', facility_types_path %>
+<%= link_to "Edit", edit_facility_type_path(@facility_type) %>
+<%= link_to 'Delete', facility_type_path(@facility_type),method: :delete,data: { confirm: 'Are you sure?'}%>

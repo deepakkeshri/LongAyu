@@ -1,0 +1,104 @@
+<script>
+    $(document).ready(function() {
+        $("#select-input").select2()
+
+    })
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+<%= link_to '<<Back', :back,:class => 'btn btn-primary' %>
+
+<div class="container text-primary">
+<div class="row">
+  <div class="panel panel-success col-lg-6 col-lg-offset-3">
+    <div class="panel-heading">
+      Register Yourself 
+    </div>
+    <div class="panel-body">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+            <em class="label label-danger">fields marked with (*) are cumpulsory</em></br>
+            <%= f.fields_for :patient do |p| %>
+                <div class="form-group ">
+                  <%= p.label :first_name, 'First Name', class: 'required' %><br />
+		    <div class="input-group">
+          	      <span class="input-group-addon ">
+                        <i class="glyphicon glyphicon-plus"></i></span>
+                          <%= p.text_field :first_name, :autofocus => true, placeholder: 'Your Name Please', class: 'form-control' %>
+                    </div>
+                </div>
+                <div class="form-group ">
+                  <%= p.label :last_name, 'Last Name', class: 'required' %><br />
+		    <div class="input-group">
+          	      <span class="input-group-addon ">
+                        <i class="glyphicon glyphicon-plus"></i></span>
+                  <%= p.text_field :last_name,  :autofocus => true, placeholder: 'Sur-Name Please', class: 'form-control' %>
+                </div>
+                <%= p.label :title, 'Gender', class: 'required' %>
+                <%= p.select :title, [['M','M'],['F','F'], ['Others','Others']] %>
+              </div>
+            <% end %>
+          </table>
+        </div>
+
+
+        <div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+          <table>
+	    <div class="form-group ">
+            <%= f.label :mobile, :class=> 'required' %>
+              <div class="input-group">
+                <span class="input-group-addon ">
+                  <i class="glyphicon glyphicon-phone-alt"></i></span>
+                  <%= f.telephone_field :mobile, :autofocus => true, class: 'form-control' %>
+              </div>
+            </div>
+
+	    <div class="form-group ">
+            <%= f.label :email, :class=> 'required' %>
+              <div class="input-group">
+                <span class="input-group-addon ">
+                  <i class="glyphicon glyphicon-envelope"></i></span>
+                  <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password , class: 'required' %>
+              <% if @validatable %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+        	<div class="input-group">
+      		<span class="input-group-addon ">
+        	<i class="glyphicon glyphicon-lock"></i></span>
+              <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password_confirmation , class: 'required' %>
+              <% if @validatable %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+        	<div class="input-group">
+      		<span class="input-group-addon ">
+        	<i class="glyphicon glyphicon-lock"></i></span>
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+            </div>
+
+            <div class="field">
+              <%= f.check_box :terms_of_service ,:acceptance =>{:accept => true}%>
+              <%= f.label :terms_of_service,'Accept Terms and Conditions' %><br />
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Sign up" ,:class=>'btn btn-success'%>
+            </div>
+          </table>
+        </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+
+  </div>
+</div>

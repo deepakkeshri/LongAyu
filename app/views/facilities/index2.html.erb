@@ -1,0 +1,35 @@
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:20px; margin:0px;"%>
+	<div class="col-md-4 offset2">
+	</div>
+
+	<% if can? :show, Centre %>
+		<%= link_to @centre.name , centre_path(@centre) %>
+	<% end %><br>
+
+	<% if can? :create, Facility %>
+		<%= link_to "Add Facility", new_facility_path%>
+	<% end %>
+	<h1>Facilities</h1>
+	
+	<div class="col-md-8 offset2">
+		<% @facilities.each do |facility| %>
+			<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+				<table>
+					<strong>Name:</strong>
+					<% if can? :show, Service %>
+			      		<%= link_to facility.name, facility_path(facility) %>
+			      	<% end %><br>
+
+			      <strong>Type of Facility</strong><%= facility.facility_type.name %><br>
+      
+			      	<% if can? :edit, Service %>
+			    	  	<%= link_to "Edit", edit_facility_path(facility) %>
+			    	<% end %>
+			    	<% if can? :destroy, Service %>
+			    	  	<%= link_to 'Delete', facility_path(facility), method: :delete,data: { confirm: 'Are you sure?'}%>
+			    	<% end %>
+    	 		</table>
+    	 	</div><br>
+  		<% end %>
+  	</div>
+</div>

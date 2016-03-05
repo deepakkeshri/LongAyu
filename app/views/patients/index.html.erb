@@ -1,0 +1,22 @@
+
+<h1>Listing Centre</h1>
+ 
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th></th>
+  </tr>
+ 
+  <% @patients.each do |patient| %>
+    <tr>
+      <td><%= patient.first_name %></td>
+      <td><%= patient.last_name %></td>
+      
+      <td><%= link_to "Show", patient_path(patient) %>
+    	  <%= link_to "Edit", edit_patient_path(patient) %>
+    	  <%= link_to 'Delete', patient_path(patient), method: :delete,data: { confirm: 'Are you sure?'}%></td>
+    </tr>
+  
+  <% end %>
+</table>

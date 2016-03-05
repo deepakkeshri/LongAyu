@@ -1,0 +1,90 @@
+<%= link_to 'Back', staffs_path %>
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:50px; margin:0px;" %>
+	<div class="col-md-1 offset2">
+	</div>
+	<h3> Details</h3></br>
+	<div class="col-md-4 offset2">
+		<div class="row" style="color:#ff0000 ; background:#8899cc ; padding:20px; margin:0px;" %>
+			<table>
+				<h3>Profile</h3></br>
+				  <strong>Name:</strong>
+				  <%= @staff.title %>
+				  <%= @staff.first_name %>
+				  <%= @staff.last_name %><br>
+				
+				  <strong>Gender:</strong>
+				  <%= @staff.gender %><br>
+				  
+				  <strong>Branch:</strong>
+				  <%= @staff.centre %><br>
+				  
+				  <strong>Staff Type:</strong>
+				  <%= @staff.staff_type.name %><br>
+				  
+				  <strong>Working Hours:</strong>
+				  <%= @staff.start_time %>to 
+				  <%= @staff.end_time %><br>
+				  
+				  <strong>Degree:</strong>
+				  <%= @staff.degree %><br>
+				  
+				  <strong>Qualification:</strong>
+				  <%= @staff.qualification %><br>
+				  
+				  <strong>Specialization:</strong>
+				  <%= @staff.specialization %><br>
+				  
+				  <strong>Designation:</strong>
+				  <%= @staff.designation %><br>
+				  
+				  <strong>Language:</strong>
+				  <%= @staff.language %><br>
+				  
+				  <strong>Biography:</strong>
+				  <%= @staff.biography %><br>
+			</table>
+		</div>
+		
+		<div class="row" style="color:#ff0000 ; background:#889955 ; padding:20px; margin:0px;" %>
+			<table>
+				<h3>Location Details</h3></br>
+				
+				<strong>Email:</strong>
+			  	<%= @staff.email %><br>
+			  	
+				  <strong>Mobile:</strong>
+				  <%= @staff.country_mobile_code %>
+				  <%= @staff.mobile %><br>
+				
+				<p>
+				  <strong>Address:</strong>
+				  <%= @staff.address_line1 %>
+				  <%= @staff.address_line2 %>
+				  <%= @staff.address_line3 %>
+				</p>
+				
+				<p>
+				  <strong>Pincode:</strong>
+				  <%= @staff.pincode %>
+				</p>
+				
+				<p>
+				  <strong>City:</strong>
+				  <%= @staff.city %>
+				</p>
+				
+				<p>
+				  <strong>State:</strong>
+				  <%= @staff.state %>
+				</p>
+				
+				<p>
+				  <strong>Country:</strong>
+				  <%= @staff.country %>
+				</p>
+			</table>
+		</div>
+		<%= link_to "Edit", edit_staff_path(@staff) %>
+		<%= link_to 'Delete', staff_path(@staff),method: :delete,data: { confirm: 'Are you sure?'}%>
+	</div>
+</div>

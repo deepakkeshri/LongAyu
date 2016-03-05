@@ -1,0 +1,47 @@
+<h1>Listing addresses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address1</th>
+      <th>Address2</th>
+      <th>Address3</th>
+      <th>Landmark1</th>
+      <th>Landmark2</th>
+      <th>Landmark3</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Pin</th>
+      <th>Addressable</th>
+      <th>Addessable type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.address1 %></td>
+        <td><%= address.address2 %></td>
+        <td><%= address.address3 %></td>
+        <td><%= address.landmark1 %></td>
+        <td><%= address.landmark2 %></td>
+        <td><%= address.landmark3 %></td>
+        <td><%= address.city %></td>
+        <td><%= address.state %></td>
+        <td><%= address.country %></td>
+        <td><%= address.pin %></td>
+        <td><%= address.addressable_id %></td>
+        <td><%= address.addessable_type %></td>
+        <td><%= link_to 'Show', address %></td>
+        <td><%= link_to 'Edit', edit_address_path(address) %></td>
+        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address', new_address_path %>

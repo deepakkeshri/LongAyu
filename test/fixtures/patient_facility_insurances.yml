@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  centre_id: 1
+  without_insurance_accepted: false
+  without_insurance_accepted_description: MyText
+  public_insurance_accepted: false
+  public_insurance_accepted_description: MyText
+  private_insurance_accepted: false
+  private_insurance_accepted_description: MyText
+  with_dental_pain_accepted: false
+  with_dental_pain_accepted_description: MyText
+
+two:
+  centre_id: 1
+  without_insurance_accepted: false
+  without_insurance_accepted_description: MyText
+  public_insurance_accepted: false
+  public_insurance_accepted_description: MyText
+  private_insurance_accepted: false
+  private_insurance_accepted_description: MyText
+  with_dental_pain_accepted: false
+  with_dental_pain_accepted_description: MyText

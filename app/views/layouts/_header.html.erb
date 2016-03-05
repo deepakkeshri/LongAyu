@@ -1,0 +1,104 @@
+<diV class="conatiner" style="color:#ff0000 ; background:#eeeecc ; padding:20px; margin:0px">
+	<div class="row">
+		
+		<div class="col-md-8 offset2">
+			<%= image_tag('logo.png',:height=>'100',:width=>'80') %>
+		</div>
+		
+		<div class="col-md-4 offset2">
+			<ul class="nav nav-pills">
+				<li><%= link_to 'Home',welcome_index_path %></li>
+				<li><%= link_to 'About',about_path %></li>
+				<li><%= link_to 'Contact',contact_path %></li>
+			</ul>
+		</div>
+		
+		<div class="col-md-4 offset2" align="right">
+			<% if account_signed_in? %>
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">My Account<span class="caret"></span></button>
+					<ul class = "dropdown-menu dropdown-menu-right " role = "menu" aria-labelledby= "dropdownMenu1">
+						<li role="presentation">
+							<% if current_account.has_role? :branch_admin %>
+								<%= link_to 'Profile',centre_path(current_account.centre) %>
+							<% elsif current_account.has_role? :branch %>
+								<%= link_to 'Profile',centre_path(current_account.centre) %>
+							<% elsif current_account.has_role? :patient %>
+								<%= link_to 'Profile', patient_path(current_account.patient) %>
+							<% end %>
+							<%= link_to 'Change Password',edit_account_registration_path%>
+							<%= link_to 'Sign out', destroy_session_path(:account),:method => :delete %>
+							<%= link_to 'Delete Account', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+						</li>
+					</ul>
+				</div>
+			
+			<% else %>	
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Patient<span class="caret"></span></button>
+					<ul class = "dropdown-menu dropdown-menu-right " role = "menu" aria-labelledby= "dropdownMenu1">
+						<li role="presentation"><%= link_to "Login", new_session_path(:account) %></li>
+						<li role="presentation"><%= link_to "Signup", new_registration_path(:account) %></li>
+					</ul>
+				</div>
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">Clinic<span class="caret"></span></button>
+					<ul class = "dropdown-menu dropdown-menu-right" role = "menu" aria-labelledby= "dropdownMenu2">
+						<li role="presentation"><%= link_to "Login", centre_sign_in_path %></li>
+						<li role="presentation"><%= link_to "Add Clinic", centre_sign_up_path %></li>
+					</ul>
+				</div>
+			
+			<% end%>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-4 offset2" >
+			<% if can? :index, Property %>
+				<%= link_to "Properties", properties_path %>
+			<% end %>
+			
+			<% if can? :read, CentreType %>
+				<%= link_to "Centre Types", centre_types_path %>
+			<% end %>
+				
+			<% if can? :read, ServiceType %>	
+				<%= link_to "Service Types", service_types_path %>
+			<% end %>
+			
+			<% if can? :read, FacilityType %>	
+				<%= link_to "Facility Types", facility_types_path %>
+			<% end %>
+			
+			<% if can? :read, StaffType %>	
+				<%= link_to "Staff Types", staff_types_path %>
+			<% end %>
+			
+			<% if can? :read, MessageType %>	
+				<%= link_to "Message Types", staff_types_path %>
+			<% end %>
+				
+			<% if can? :read, Patient %>
+				<%= link_to "Patients", patients_path %>
+			<% end %>
+		</div>
+		
+		<div class="span4 offset2" >
+			<% if can? :read, Centre %>
+				<%= link_to "Branches", centres_path %>
+			<% end %>
+			<% if can? :read, Staff %>	
+				<%= link_to "Staffs", staffs_path %>
+			<% end %>
+			
+			<% if can? :read, Service %>	
+				<%= link_to "Services", services_path %>
+			<% end %>
+			<% if can? :read, Facility %>	
+				<%= link_to "Facilities", facilities_path %>
+			<% end %>
+		</div>
+		
+	</div>
+</div>

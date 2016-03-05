@@ -1,0 +1,38 @@
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:20px; margin:0px;"%>
+	<div class="col-md-4 offset2">
+	</div>
+	<% if can? :create, Service %>
+		<%= link_to "Add Service", new_service_path%>
+	<% end %>
+	<h3>Services</h3>
+	<div class="col-md-8 offset2">
+		<% @centres.each do |centre| %>
+			<% if can? :show, Centre %>
+				<%= link_to centre.name , centre_path(centre) %>
+			<% end %><br>
+		 	<% centre.services.each do |service| %>
+				<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+					<table>
+						<strong>Nmae</strong>
+						<% if can? :show, Service %>
+				      		<%= link_to service.name, service_path(service) %>
+				      	<% end %><br>
+				      	
+				        <strong>Service Type</strong><%= service.service_type.name %><br>
+				        
+				        <strong>Clinic Price</strong><%= service.price %><br>
+				        
+				        <strong>DD Price</strong><%= service.dd_price %><br>
+				      
+				      	<% if can? :edit, Service %>
+				    	  	<%= link_to "Edit", edit_service_path(service) %>
+				    	<% end %>
+				    	<% if can? :destroy, Service %>
+				    	  	<%= link_to 'Delete', service_path(service), method: :delete,data: { confirm: 'Are you sure?'}%>
+				    	<% end %>
+				    </table>
+				 </div><br>
+			<% end %><hr>
+		<% end%>
+	</div>
+</div>

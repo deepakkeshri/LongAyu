@@ -1,0 +1,2 @@
+module BeautyServicesHelper
+end

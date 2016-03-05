@@ -1,0 +1,43 @@
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:50px; margin:0px;" %>
+	<div class="col-md-1 offset2">
+	</div>
+	<h3> Details</h3></br>
+	<div class="col-md-4 offset2">
+		<div class="row" style="color:#ff0000 ; background:#8899cc ; padding:20px; margin:0px;" %>
+			<table>
+				<p>
+				  <strong>Name:</strong>
+				  <%= @facility.name %>
+				</p>
+				
+				<p>
+				  <strong>ServiceType:</strong>
+				  <%= @facility.facility_type.name %>
+				</p>
+				
+				<p>
+				  <strong>Price:</strong>
+				  <%= @facility.price %>
+				</p>
+				
+				<p>
+				  <strong>Timing:</strong>
+				  <%= @facility.start_time.strftime("%H.%M ") %>to<%= @facility.end_time.strftime(" %H.%M") %>
+				</p>
+				
+				<p>
+				  <strong>Description:</strong>
+				  <%= @facility.description %>
+				</p>
+				
+				<% if can? :edit, Facility %>
+					<%= link_to "Edit", edit_facility_path(@facility) %>
+				<% end %>
+				<% if can? :destroy, Facility %>
+					<%= link_to 'Delete', facility_path(@facility),method: :delete,data: { confirm: 'Are you sure?'}%>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
+

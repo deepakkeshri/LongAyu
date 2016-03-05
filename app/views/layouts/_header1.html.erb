@@ -1,0 +1,61 @@
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top bg-secondary">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <a class="navbar-brand" href="http://longayu.com/"><%= image_tag('logo.png',:height=>'80',:width=>'140',:class => 'logo img-responsive') %></a>
+      <a class="navbar-brand" href="http://longayu.com/"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+
+        <li><%= link_to 'Home',welcome_index_path, :class => 'active' %></li>
+        <li><%= link_to 'About',about_path %></li>
+        <li><%= link_to 'Contact',contact_path %></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if account_signed_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><% if current_account.has_role? :branch_admin %>
+                  <%= link_to 'Profile',centre_path(current_account.centre) %>
+              <% elsif current_account.has_role? :branch %>
+                  <%= link_to 'Profile',centre_path(current_account.centre) %>
+              <% elsif current_account.has_role? :patient %>
+                  <%= link_to 'Profile', patient_path(current_account.patient) %>
+              <% end %></li>
+            <li><%= link_to 'Change Password',edit_account_registration_path%></li>
+            <li><%= link_to 'Sign out', destroy_session_path(:account),:method => :delete %></li>
+            <li role="separator" class="divider"></li>
+
+            <li><%= link_to 'Delete Account', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></li>
+          </ul>
+
+        </li>
+        <% else %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign In/Sign Up <%= fa_icon "icon-user-plus"%> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              <li class="dropdown-header bg-primary">Patient</li>
+              <li><%= link_to "Login", new_session_path(:account) %></li>
+              <li><%= link_to "Signup", new_registration_path(:account) %></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header bg-primary">Clinic</li>
+              <li><%= link_to "Login", centre_sign_in_path %></li>
+              <li><%= link_to "Add Clinic", centre_sign_up_path %></li>
+            </ul>
+
+        <% end%>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>

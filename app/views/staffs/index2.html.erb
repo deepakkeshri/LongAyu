@@ -1,0 +1,25 @@
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:20px; margin:0px;"%>
+	<div class="col-md-4 offset2">
+	</div>
+	<% if can? :create, Staff %>
+		<%= link_to "Add Staff", new_staff_path %>
+	<% end %>
+	<h3>Staffs</h3>
+	<div class="col-md-8 offset2">
+		<% @staffs.each do |staff| %>
+			<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+				<table>
+					  <strong>Nmae</strong>
+					  <%= link_to (staff.title + staff.first_name + staff.last_name) , staff_path(staff) %><br>
+					  
+					  <strong>Staff Type</strong><%= staff.centre %><br>
+					  <strong>Mobile</strong><%= staff.mobile %><br>
+					  
+					<%= link_to "Edit", edit_staff_path(staff) %>
+					<%= link_to 'Delete', staff_path(staff), method: :delete,data: { confirm: 'Are you sure?'}%></td>
+					
+					</table>
+				</div><hr>
+			<% end %>
+		</div>
+	</div>

@@ -1,0 +1,75 @@
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:50px; margin:0px;" %>
+	<div class="col-md-1 offset2">
+	</div>
+	<h3> Details</h3></br>
+	<div class="col-md-4 offset2">
+		<div class="row" style="color:#ff0000 ; background:#8899cc ; padding:20px; margin:0px;" %>
+			<table>
+				<p>
+				  <strong>Name:</strong>
+				  <%= @service.name %>
+				</p>
+				
+				<p>
+				  <strong>ServiceType:</strong>
+				  <%= @service.service_type.name %>
+				</p>
+				
+				<p>
+				  <strong>Branch:</strong>
+				  <%= @service.centre.name %>
+				</p>
+				
+				<p>
+				  <strong>Price:</strong>
+				  <%= @service.price %>
+				</p>
+				
+				<p>
+				  <strong>Tax:</strong>
+				  <%= @service.tax %>
+				</p>
+				
+				<p>
+				  <strong>DD_Price:</strong>
+				  <%= @service.dd_price %>
+				</p>
+				
+				<p>
+				  <strong>DD_Tax:</strong>
+				  <%= @service.dd_tax %>
+				</p>
+				
+				<p>
+				  <strong>Doctor_fee:</strong>
+				  <%= @service.doctor_fee %>
+				</p>
+				
+				<p>
+				  <strong>Anesthesia_price:</strong>
+				  <%= @service.anesthesia_price %>
+				</p>
+				
+				<p>
+				  <strong>Timing:</strong>
+				  <%= @service.start_time %>to<%= @service.end_time %>
+				</p>
+				
+				<p>
+				  <strong>Description:</strong>
+				  <%= @service.description %>
+				</p>
+				
+				<% if can? :edit, Service %>
+					<%= link_to "Edit", edit_service_path(@service) %>
+				<% end %>
+				<% if can? :destroy, Service %>
+					<%= link_to 'Delete', service_path(@service),method: :delete,data: { confirm: 'Are you sure?'}%>
+				<% end %>
+              <% if can? :book, Service %>
+                  <%= link_to 'Book', book_service_path(@service),:class=>"btn btn-primary"%>
+              <% end %>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,68 @@
+<div class="row" style="color:#ff0000 ; background:#aacccc ; padding:50px; margin:0px;" %>
+	<%= link_to '<<Back', :back %>
+	<div class="col-md-1 offset2">
+	</div>
+	<h2>Add Branch</h2>
+	<%= devise_error_messages! %>
+		<div class="col-md-4 offset2">
+			<%= form_for(resource, as: resource_name, url: branch_sign_up_path) do |f| %>
+			<div class="row" style="color:#ff0000 ; background:#8899cc ; padding:20px; margin:0px;" %>
+					<table>
+						<em>fields marked with (*) are cumpulsory</em>
+						<h3>Profile Details</h3></br>
+				    	<%= f.fields_for :centre do |p| %>
+				    		
+				    		<%= p.hidden_field :centre_id,value: current_account.centre.id %><br>
+					      
+					        <%= p.label :name,'Name of Clinic', class: 'required' %></br>
+					        <%= p.text_field :name %><br>
+					        
+						  	<%= p.label :centre_type %></br>
+							<%= p.collection_select :centre_type_id, CentreType.order(:name),:id,:name, default: "Select" %><br>   
+					          	
+					    <% end %>	      
+					</table>
+				</div>
+			
+			
+				<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+					<table>
+						<em>fields marked with (*) are cumpulsory</em>
+						<h3>Login Details</h3></br>	
+						  <div class="field">
+						    <%= f.label :mobile, class: 'required' %><br />
+						    <%= f.telephone_field :mobile, autofocus: true %>
+						  </div>
+							
+						  <div class="field">
+						    <%= f.label :email , class: 'required' %><br />
+						    <%= f.email_field :email, autofocus: true %>
+						  </div>
+						  
+						  <div class="field">
+						    <%= f.label :password , class: 'required' %>
+						    <% if @validatable %>
+						    <em>(<%= @minimum_password_length %> characters minimum)</em>
+						    <% end %><br />
+						    <%= f.password_field :password, autocomplete: "off" %>
+						  </div>
+						
+						  <div class="field">
+						    <%= f.label :password_confirmation , class: 'required' %><br />
+						    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+						  </div>
+						  
+						  <div class="field">
+							<%= f.check_box :terms_of_service ,:acceptance =>{:accept => true}%>
+							<%= f.label :terms_of_service,'Accept Temrs and Conditions' %></br>
+						  </div>
+						
+						  <div class="actions">
+						    <%= f.submit "Add Branch" %>
+						  </div>
+						  <%= link_to "Already have an account, Login", centre_sign_in_path %>
+					</table>
+				</div>
+			<% end %>
+		</div>		
+	</div>	

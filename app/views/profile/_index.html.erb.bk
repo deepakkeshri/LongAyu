@@ -1,0 +1,76 @@
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:20px; margin:0px;"%>
+  <div class="col-md-4 offset2">
+  </div>
+  <%= link_to "Add Profile", branch_sign_up_path %>
+  <%= link_to "Add Profile", branch_sign_up_path %>
+  <%= link_to "Add Profile", branch_sign_up_path %>
+  <%= link_to "Add Profile", branch_sign_up_path %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+<div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+  <%= form_tag import_services_path, enforce_utf8: true ,miultipart: true do |f| %>
+  <%= label_tag :file,'Add Services'%>
+  <%= file_field_tag :file %>
+  <%= radio_button_tag "", "ravi" %>
+  <% end %>
+	<h3>Branches</h3>
+	<div class="col-md-8 offset2">
+		
+			<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+				<table>
+			    	<% if can? :show, Facility %>
+			    	  	<%= link_to 'Facilities', branch_facilities_path(centre)%>
+			    	<% end %><br>
+			      	<% if can? :edit, Centre  %>
+			    	  	<%= link_to "Edit", edit_centre_path(centre) %>
+			    	<% end %>
+			    	<% if can? :destroy, Centre %>
+			    	  	<%= link_to 'Delete', centre_path(centre), method: :delete,data: { confirm: 'Are you sure?'}%>
+			    	<% end %>
+				</table>
+			</div><hr>
+	
+	</div>
+</div>
+  

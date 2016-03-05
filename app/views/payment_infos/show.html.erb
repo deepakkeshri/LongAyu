@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @payment_info.currency %>
+</p>
+
+<p>
+  <strong>Cheque accept:</strong>
+  <%= @payment_info.cheque_accept %>
+</p>
+
+<p>
+  <strong>Cheque accept description:</strong>
+  <%= @payment_info.cheque_accept_description %>
+</p>
+
+<p>
+  <strong>Debit accept:</strong>
+  <%= @payment_info.debit_accept %>
+</p>
+
+<p>
+  <strong>Debit accept description:</strong>
+  <%= @payment_info.debit_accept_description %>
+</p>
+
+<p>
+  <strong>Credit accept:</strong>
+  <%= @payment_info.credit_accept %>
+</p>
+
+<p>
+  <strong>Credit accept description:</strong>
+  <%= @payment_info.credit_accept_description %>
+</p>
+
+<p>
+  <strong>Wallet accept:</strong>
+  <%= @payment_info.wallet_accept %>
+</p>
+
+<p>
+  <strong>Wallet accept description:</strong>
+  <%= @payment_info.wallet_accept_description %>
+</p>
+
+<p>
+  <strong>Cash accept:</strong>
+  <%= @payment_info.cash_accept %>
+</p>
+
+<p>
+  <strong>Cash accept description:</strong>
+  <%= @payment_info.cash_accept_description %>
+</p>
+
+<p>
+  <strong>Centre:</strong>
+  <%= @payment_info.centre_id %>
+</p>
+
+<%= link_to 'Edit', edit_payment_info_path(@payment_info) %> |
+<%= link_to 'Back', payment_infos_path %>

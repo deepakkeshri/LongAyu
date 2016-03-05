@@ -1,0 +1,49 @@
+<h2>New Staff</h2>
+<%= form_for @staff do |f| %>
+
+	<% if @staff.errors.any? %>
+  	<div id="error_explanation">
+    	<h2><%= pluralize(@staff.errors.count, "error") %> prohibited from being saved:</h2>
+    	<ul>
+    		<% @staff.errors.full_messages.each do |msg| %>
+      			<li><%= msg %></li>
+    		<% end %>
+    	</ul>
+  	</div>
+  	<% end %>
+
+  <p>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :mobile %><br>
+    <%= f.collection_select :country_mobile_code, CountryMobileCode.order(:name),:id,:name %>
+    <%= f.telephone_field :mobile %>
+  </p>
+
+  <p>
+    <%= f.label :pincode %><br>
+    <%= f.text_field :pincode %>
+  </p>
+
+  <p>
+    <%= f.label :city %><br>
+    <%= f.collection_select :city, City.order(:name),:id,:name, default: "Select" %>
+  </p>
+  
+  <p>
+    <%= f.label :state %><br>
+    <%= f.collection_select :state, State.order(:name),:id,:name, default: "Select" %>
+  </p>
+  
+  <p>
+    <%= f.label :country %><br>
+    <%= f.collection_select :country, Country.order(:name),:id,:name, default: "Select" %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

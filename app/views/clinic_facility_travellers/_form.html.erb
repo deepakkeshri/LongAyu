@@ -1,0 +1,77 @@
+<%= form_for(@clinic_facility_traveller) do |f| %>
+  <% if @clinic_facility_traveller.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@clinic_facility_traveller.errors.count, "error") %> prohibited this clinic_facility_traveller from being saved:</h2>
+
+      <ul>
+      <% @clinic_facility_traveller.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :centre_id %><br>
+    <%= f.number_field :centre_id %>
+  </div>
+  <div class="field">
+    <%= f.label :international_trael_friendly %><br>
+    <%= f.check_box :international_trael_friendly %>
+  </div>
+  <div class="field">
+    <%= f.label :international_travel_friendly_description %><br>
+    <%= f.text_area :international_travel_friendly_description %>
+  </div>
+  <div class="field">
+    <%= f.label :local_travel_friendly %><br>
+    <%= f.check_box :local_travel_friendly %>
+  </div>
+  <div class="field">
+    <%= f.label :local_travel_friendly_description %><br>
+    <%= f.text_area :local_travel_friendly_description %>
+  </div>
+  <div class="field">
+    <%= f.label :traveller_accomodation_friendly %><br>
+    <%= f.check_box :traveller_accomodation_friendly %>
+  </div>
+  <div class="field">
+    <%= f.label :traveller_accomodation_friendly_description %><br>
+    <%= f.text_area :traveller_accomodation_friendly_description %>
+  </div>
+  <div class="field">
+    <%= f.label :local_guide %><br>
+    <%= f.check_box :local_guide %>
+  </div>
+  <div class="field">
+    <%= f.label :local_guide_description %><br>
+    <%= f.text_area :local_guide_description %>
+  </div>
+  <div class="field">
+    <%= f.label :tour_and_vacation_services %><br>
+    <%= f.check_box :tour_and_vacation_services %>
+  </div>
+  <div class="field">
+    <%= f.label :tour_and_vacation_services_description %><br>
+    <%= f.text_area :tour_and_vacation_services_description %>
+  </div>
+  <div class="field">
+    <%= f.label :pickup_from_hotel %><br>
+    <%= f.check_box :pickup_from_hotel %>
+  </div>
+  <div class="field">
+    <%= f.label :pickup_from_hotel_decription %><br>
+    <%= f.text_area :pickup_from_hotel_decription %>
+  </div>
+  <div class="field">
+    <%= f.label :pickup_from_airport %><br>
+    <%= f.check_box :pickup_from_airport %>
+  </div>
+  <div class="field">
+    <%= f.label :pickup_from_airport_description %><br>
+    <%= f.text_area :pickup_from_airport_description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

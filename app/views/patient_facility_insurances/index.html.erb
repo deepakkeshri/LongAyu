@@ -1,0 +1,41 @@
+<h1>Listing patient_facility_insurances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Centre</th>
+      <th>Without insurance accepted</th>
+      <th>Without insurance accepted description</th>
+      <th>Public insurance accepted</th>
+      <th>Public insurance accepted description</th>
+      <th>Private insurance accepted</th>
+      <th>Private insurance accepted description</th>
+      <th>With dental pain accepted</th>
+      <th>With dental pain accepted description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @patient_facility_insurances.each do |patient_facility_insurance| %>
+      <tr>
+        <td><%= patient_facility_insurance.centre_id %></td>
+        <td><%= patient_facility_insurance.without_insurance_accepted %></td>
+        <td><%= patient_facility_insurance.without_insurance_accepted_description %></td>
+        <td><%= patient_facility_insurance.public_insurance_accepted %></td>
+        <td><%= patient_facility_insurance.public_insurance_accepted_description %></td>
+        <td><%= patient_facility_insurance.private_insurance_accepted %></td>
+        <td><%= patient_facility_insurance.private_insurance_accepted_description %></td>
+        <td><%= patient_facility_insurance.with_dental_pain_accepted %></td>
+        <td><%= patient_facility_insurance.with_dental_pain_accepted_description %></td>
+        <td><%= link_to 'Show', patient_facility_insurance %></td>
+        <td><%= link_to 'Edit', edit_patient_facility_insurance_path(patient_facility_insurance) %></td>
+        <td><%= link_to 'Destroy', patient_facility_insurance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Patient facility insurance', new_patient_facility_insurance_path %>

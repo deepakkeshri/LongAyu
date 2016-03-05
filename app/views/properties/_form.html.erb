@@ -1,0 +1,73 @@
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:50px; margin:0px;" %>
+	<div class="col-md-1 offset2">
+	</div>
+	<h2>Edit Details</h2>
+	
+	<% if @property.errors.any? %>
+	  	<div id="error_explanation">
+	    	<h2><%= pluralize(@property.errors.count, "error") %> prohibited from being saved:</h2>
+	    	<ul>
+	    		<% @property.errors.full_messages.each do |msg| %>
+	      			<li><%= msg %></li>
+	    		<% end %>
+	    	</ul>
+	  	</div>
+  	<% end %>
+  	
+	<div class="col-md-4 offset2">
+		<%= form_for @property do |f| %>
+			<div class="row" style="color:#ff0000 ; background:#8899cc ; padding:20px; margin:0px;" %>
+				<table>
+					<h3>Profile Details</h3></br>
+					
+					    <%= f.label :name , class: 'required' %><br>
+					    <%= f.text_field :name %></br>
+  
+  							<%= f.label :website, 'Clinic Website', class: 'required' %><em>(https:example.com)</em></br>
+				        <%= f.url_field :website %></br>
+				        
+				        <%= f.label :language , class: 'required'%></br>
+				        <%= f.collection_select :language, Language.order(:name),:id,:name, :prompt=> "Select" %></br>
+				        
+				        <%= f.label :timezone, class: 'required' %></br>
+				        <%= f.time_zone_select :timezone %></br>
+				</table>
+			</div>
+			
+			<div class="row" style="color:#ff0000 ; background:#889955 ; padding:20px; margin:0px;" %>
+				<table>
+					<h3>Location Details</h3></br>
+					
+					<%= f.label :mobile,'Secondary Mobile' %></br>
+		    		<%= f.collection_select :country_mobile_code, CountryMobileCode.order(:name),:name,:name , :prompt=> "Select"%>
+		    		<%= f.telephone_field :secondary_mobile %></br>
+		    		
+		    		<%= f.label :email,'Secondary Email' %></br>
+		    		<%= f.telephone_field :secondary_email %></br>
+			      
+			        <%= f.label :address_line1, class: 'required' %></br>
+			        <%= f.text_field :address_line1 %><br>
+			        
+			        <%= f.label :address_line2 %></br>
+			        <%= f.text_field :address_line2 %></br>
+			        
+			        <%= f.label :landmark %></br>
+				    <%= f.text_field :landmark %></br>
+				    
+				    <%= f.label :city , class: 'required' %><br>
+				    <%= f.collection_select :city, City.order(:name),:name,:name, :prompt=> "Select" %></br>
+				  
+				    <%= f.label :state , class: 'required' %></br>
+				    <%= f.collection_select :state, State.order(:name),:name,:name, :prompt=> "Select"%></br>
+				  
+				    <%= f.label :country , class: 'required' %></br>
+				    <%= f.collection_select :country, Country.order(:name),:name,:name, :prompt=> "Select"%></br>			      
+				</table>
+			</div>
+ 
+  			<div class="actions">
+				<%= f.submit "Update Profile" %>
+			</div>
+		<% end %>
+	</div>
+</div>

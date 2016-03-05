@@ -1,0 +1,104 @@
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:50px; margin:0px;" %>
+	<div class="col-md-1 offset2">
+	</div>
+	<h2>Add Your Clinic</h2>
+	<%= devise_error_messages! %>
+		<div class="col-md-4 offset2">
+			<%= form_for(resource, as: resource_name, url: property_sign_up_path) do |f| %>
+				<div class="row" style="color:#ff0000 ; background:#8899cc ; padding:20px; margin:0px;" %>
+					<table>
+						<em>fields marked with (*) are cumpulsory</em>
+						<h3>Profile Details</h3></br>
+				    	<%= f.fields_for :property do |p| %>
+				    	
+				    		<%= p.label :property_id %></br>
+					        <%= p.hidden_field :property_id,:value => 'params' %><br>
+					      
+					        <%= p.label :name,'Name of Clinic', class: 'required' %></br>
+					        <%= p.text_field :name %><br>
+					        
+					        <%= p.label :website, 'Clinic Website', class: 'required' %><em>(https:example.com)</em></br>
+					        <%= p.url_field :website %></br>
+					        
+					        <%= p.label :language , class: 'required'%></br>
+					        <%= p.collection_select :language, Language.order(:name),:id,:name, :prompt=> "Select" %></br>
+					        
+					        <%= p.label :timezone, class: 'required' %></br>
+					        <%= p.time_zone_select :timezone %></br>			      
+					</table>
+				</div>
+				
+				<div class="row" style="color:#ff0000 ; background:#889955 ; padding:20px; margin:0px;" %>
+					<table>
+						<h3>Location Details</h3></br>
+						
+							<%= p.label :mobile,'Secondary Mobile' %></br>
+				    		<%= p.collection_select :country_mobile_code, Country.order(:name),:id,:mobile_code , :prompt=> "Select"%>
+				    		<%= p.telephone_field :secondary_mobile %></br>
+				    		
+				    		<%= p.label :email,'Secondary Email' %></br>
+				    		<%= p.telephone_field :secondary_email %></br>
+					      
+					        <%= p.label :address_line1, class: 'required' %></br>
+					        <%= p.text_field :address_line1 %><br>
+					        
+					        <%= p.label :address_line2 %></br>
+					        <%= p.text_field :address_line2 %></br>
+					        
+					        <%= p.label :landmark %></br>
+						    <%= p.text_field :landmark %></br>
+						    
+						    <%= p.label :city , class: 'required' %><br>
+						    <%= p.collection_select :city, City.order(:name),:id,:name, :prompt=> "Select" %></br>
+						  
+						    <%= p.label :state , class: 'required' %></br>
+						    <%= p.collection_select :state, State.order(:name),:id,:name, :prompt=> "Select"%></br>
+						  
+						    <%= p.label :country , class: 'required' %></br>
+						    <%= p.collection_select :country, Country.order(:name),:id,:name, :prompt=> "Select"%></br>			      
+						<% end %>
+					</table>
+				</div>
+	
+				<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+					<table >
+						<h3>Login Details</h3></br>	
+						
+						<div class="field">
+							<%= f.label :mobile, class: 'required' %></br>
+							<%= f.telephone_field :mobile, autofocus: true %></br>
+						</div>
+							
+						<div class="field">
+							<%= f.label :email, class: 'required' %></br>
+							<%= f.email_field :email, autofocus: true %></br>
+						</div>
+						  
+						<div class="field">
+							<%= f.label :password, class: 'required' %>
+							<% if @validatable %>
+								<em>(<%= @minimum_password_length %> characters minimum)</em>
+							<% end %><br />
+							<%= f.password_field :password, autocomplete: "off" %></br>
+						</div>
+						
+						<div class="field">
+							<%= f.label :password_confirmation, class: 'required' %></br>
+							<%= f.password_field :password_confirmation, autocomplete: "off" %></br>
+						</div>
+						
+						<div class="field">
+							<%= f.check_box :terms_of_service ,:acceptance =>{:accept => true}%>
+							<%= f.label :terms_of_service,'Accept Terms and Conditions' %></br>
+						</div>
+						
+						<div class="actions">
+							<%= f.submit "Add Clinic" %>
+						</div>
+						<%= link_to "Already have an account, Login", property_sign_in_path %>
+					</table>
+				</div>
+			<% end %>
+		</div>
+	
+</div>

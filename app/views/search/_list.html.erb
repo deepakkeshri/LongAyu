@@ -1,0 +1,76 @@
+<div class="container padding-top">
+  <div class="row">
+    <div class="col-sm-12" >
+<%= render 'search/search_box' %>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-sm-12" >
+
+  <label for="multiple" class="control-label"></label>
+  <%= form_tag({:action=>'index',:controller => 'search',:search_type=>@search_type},{ :method => 'get', :remote=>true}) do %>
+      <div class="col-sm-12">
+        <div class="form-group col-sm-6">
+        <select id="city-select" name='city_id' data-placeholder='Enter City' class="form-control select2-multiple">
+          <option>City</option>
+          <% City.all.each do |city| %>
+              <% if false %>
+                  <option value="<%=city.id%>" selected><%=city.name%></option>
+              <% else %>
+                  <option value="<%=city.id%>"><%=city.name%></option>
+              <% end %>
+          <% end %>
+        </select>
+</div>
+        <div class="form-group col-sm-6">
+          <select id="pincode-select" name='pin_id' data-placeholder='PinCode' class="form-control select2-multiple">
+            <option>PinCode</option>
+            <% Postalcode.all.each do |pin| %>
+                <% if false %>
+                    <option value="<%=pin.id%>" selected><%=pin.name%></option>
+                <% else %>
+                    <option value="<%=pin.id%>"><%=pin.name%></option>
+                <% end %>
+            <% end %>
+          </select>
+        </div>
+
+      </div>
+      <div class="form-group col-sm-10">
+
+        <select id="multiple" name='test_id[]' data-placeholder='Enter Test name' class="form-control select2-multiple" multiple>
+          <% @search_values.each do |test| %>
+              <% if false %>
+                  <option value="<%=test.id%>" selected><%=test.name%></option>
+              <% else %>
+                  <option value="<%=test.id%>"><%=test.name%></option>
+              <% end %>
+          <% end %>
+        </select>
+
+      </div>
+      <div class="form-group col-sm-2">
+        <%= submit_tag "Search",:class => "btn btn-primary form-control" %>
+      </div>
+
+  <%end%>
+  </div>
+
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+
+
+
+          <div id="test_list">
+            <%= render 'search/test_list' %>
+          </div>
+
+
+
+        </div>
+      </div>
+</div>
+</div>

@@ -1,0 +1,20 @@
+<p>
+  <strong>First Name:</strong>
+  <%= @staff.first_name %>
+</p>
+ 
+<p>
+  <strong>Last Name:</strong>
+  <%= @staff.last_name %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @staff.gender %>
+</p>
+
+
+
+<%= link_to 'Back', patients_path %>
+<%= link_to "Edit", edit_patient_path(@staff) %>
+<%= link_to 'Delete', patient_path(@staff),method: :delete,data: { confirm: 'Are you sure?'}%>

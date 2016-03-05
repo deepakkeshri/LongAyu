@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parking: false
+  parking_description: MyText
+  accessible_to_disabled: false
+  accessible_to_disabled_description: MyText
+  public_transport_access: false
+  public_transport_access_description: MyText
+  access_without_steps: false
+  access_without_steps_description: MyText
+  disabled_parking: false
+  disabled_parking_description: MyText
+  patient_bathroom: false
+  patient_bathroom_description: MyText
+  wireless_access: false
+  wireless_access_description: MyText
+  onsite_pharmacy: false
+  onsite_pharmacy_description: MyText
+  centre_id: 1
+
+two:
+  parking: false
+  parking_description: MyText
+  accessible_to_disabled: false
+  accessible_to_disabled_description: MyText
+  public_transport_access: false
+  public_transport_access_description: MyText
+  access_without_steps: false
+  access_without_steps_description: MyText
+  disabled_parking: false
+  disabled_parking_description: MyText
+  patient_bathroom: false
+  patient_bathroom_description: MyText
+  wireless_access: false
+  wireless_access_description: MyText
+  onsite_pharmacy: false
+  onsite_pharmacy_description: MyText
+  centre_id: 1

@@ -1,0 +1,30 @@
+<h2>New Staff</h2>
+<%= form_for @staff do |f| %>
+
+	<% if @staff.errors.any? %>
+  	<div id="error_explanation">
+    	<h2><%= pluralize(@staff.errors.count, "error") %> prohibited from being saved:</h2>
+    	<ul>
+    		<% @staff.errors.full_messages.each do |msg| %>
+      			<li><%= msg %></li>
+    		<% end %>
+    	</ul>
+  	</div>
+  	<% end %>
+
+ 
+  <p>
+  	<%= f.label :branch %>
+	<%= f.collection_select :centre, @property.centres.order(:name),:id,:name, :prompt=> "Select" %>
+  </p>
+  
+  <p>
+    <%= f.label :working_hours %><br>
+    <%= f.datetime :start_time %> to
+     <%= f.datetime :end_time %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

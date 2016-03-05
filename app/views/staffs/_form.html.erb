@@ -1,0 +1,247 @@
+<%= link_to '<<Back', :back,:class => 'btn btn-primary' %>
+<div class="container text-primary">
+  <div class="row">
+    <div class="panel panel-success col-lg-6 col-lg-offset-3">
+      <div class="panel-heading">
+        Staff
+      </div>
+      <div class="panel-body">
+	<% if @staff.errors.any? %>
+	  	<div id="error_explanation">
+	    	<h2><%= pluralize(@staff.errors.count, "error") %> prohibited from being saved:</h2>
+	    	<ul>
+	    		<% @staff.errors.full_messages.each do |msg| %>
+	      			<li><%= msg %></li>
+	    		<% end %>
+	    	</ul>
+	  	</div>
+  	<% end %>
+
+		<%= form_for @staff do |f| %>
+                  <em class="label label-danger">fields marked with (*) are cumpulsory</em>
+					<h3>Profile Details</h3></br>
+
+                  <div class="form-group ">
+                    <%= f.label :title, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.select :title,options_for_select([['Mr.','Mr.'],['Ms.','Ms.']], class: 'form-control') %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :first_name,'Name of Clinic', :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.text_field :first_name, :autofocus => true, placeholder: 'First Name', class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :last_name,'Name of Clinic', :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.text_field :last_name, :autofocus => true, placeholder: 'Last Name', class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :gender,'Name of Clinic', :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.label :male %>
+                      <%= f.radio_button :gender,"Male" %>
+                      <%= f.label :female %>
+                      <%= f.radio_button :gender,"Female" %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :branch,'Name of Clinic', :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <% if current_account.has_role? 'centre' %>
+                          <%= f.text_field :centre, value: current_account.centre.name, disabled: true , class: 'form-control'%>
+                      <% else %>
+                          <%= f.collection_select :centre, @property.centres.order(:name),:name,:name, :prompt=> "Select", class: 'form-control' %><br>
+                      <% end %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :staff_type,'Name of Clinic', :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.collection_select :staff_type_id, StaffType.order(:name),:id,:name, :prompt=> "Select", class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :working_hours, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.time_select :start_time,ampm: true, class: 'form-control' %>to
+                      <%= f.time_select :end_time,ampm: true, class: 'form-control' %>
+                     </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :degree, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.collection_select :degree, MessageType.find_by_name('Degree').messages.order(:name),:id,:name, :prompt=> "Select", class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :qualification, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.collection_select :qualification, MessageType.find_by_name('Qualification').messages.order(:name),:id,:name, :prompt=> "Select", class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :specialization, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.collection_select :specialization, MessageType.find_by_name('Specialization').messages.order(:name),:id,:name, :prompt=> "Select", class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :designation, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.collection_select :designation, MessageType.find_by_name('Designation').messages.order(:name),:id,:name, :prompt=> "Select", class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :language, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.collection_select :language, Language.order(:name),:id,:name, :prompt=> "Select", class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :biography, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.text_area :biography, class: 'form-control' %>
+                    </div>
+                  </div>
+
+			
+
+                  <div class="form-group ">
+                    <%= f.label :email, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.email_field :email, class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :mobile, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.collection_select :country_mobile_code, Country.order(:name),:mobile_code,:mobile_code , :prompt=> "Select"%>
+                      <%= f.telephone_field :mobile, class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :address_line1, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.text_field :address_line1, class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :address_line2, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.text_field :address_line2, class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :address_line3, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.text_field :address_line3, class: 'form-control' %>
+                    </div>
+                  </div>
+                <div class="form-inline">
+                  <div class="form-group ">
+                    <%= f.label :pincode, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.collection_select :pincode, Postalcode.order(:name),:name,:name, :prompt=> "Select", class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :city, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.collection_select :city, City.order(:name),:name,:name, :prompt=> "Select", class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :state, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.collection_select :state, State.order(:name),:name,:name, :prompt=> "Select", class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <%= f.label :country, :class=> 'required' %>
+                    <div class="input-group">
+      <span class="input-group-addon ">
+          <i class="glyphicon glyphicon-plus"></i></span>
+                      <%= f.collection_select :country, Country.order(:name),:name,:name, :prompt=> "Select", class: 'form-control' %>
+                    </div>
+                  </div>
+
+                </div>
+                  <div class="panel-footer">
+                    <div class="input-group ">
+
+                      <%= f.submit :class => 'btn btn-primary' %>
+
+                    </div>
+
+        </div>
+
+		<% end %>
+	</div>
+</div>
+</div>
+    </div>

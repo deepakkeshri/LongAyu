@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Parking:</strong>
+  <%= @premise.parking %>
+</p>
+
+<p>
+  <strong>Parking description:</strong>
+  <%= @premise.parking_description %>
+</p>
+
+<p>
+  <strong>Accessible to disabled:</strong>
+  <%= @premise.accessible_to_disabled %>
+</p>
+
+<p>
+  <strong>Accessible to disabled description:</strong>
+  <%= @premise.accessible_to_disabled_description %>
+</p>
+
+<p>
+  <strong>Public transport access:</strong>
+  <%= @premise.public_transport_access %>
+</p>
+
+<p>
+  <strong>Public transport access description:</strong>
+  <%= @premise.public_transport_access_description %>
+</p>
+
+<p>
+  <strong>Access without steps:</strong>
+  <%= @premise.access_without_steps %>
+</p>
+
+<p>
+  <strong>Access without steps description:</strong>
+  <%= @premise.access_without_steps_description %>
+</p>
+
+<p>
+  <strong>Disabled parking:</strong>
+  <%= @premise.disabled_parking %>
+</p>
+
+<p>
+  <strong>Disabled parking description:</strong>
+  <%= @premise.disabled_parking_description %>
+</p>
+
+<p>
+  <strong>Patient bathroom:</strong>
+  <%= @premise.patient_bathroom %>
+</p>
+
+<p>
+  <strong>Patient bathroom description:</strong>
+  <%= @premise.patient_bathroom_description %>
+</p>
+
+<p>
+  <strong>Wireless access:</strong>
+  <%= @premise.wireless_access %>
+</p>
+
+<p>
+  <strong>Wireless access description:</strong>
+  <%= @premise.wireless_access_description %>
+</p>
+
+<p>
+  <strong>Onsite pharmacy:</strong>
+  <%= @premise.onsite_pharmacy %>
+</p>
+
+<p>
+  <strong>Onsite pharmacy description:</strong>
+  <%= @premise.onsite_pharmacy_description %>
+</p>
+
+<p>
+  <strong>Centre:</strong>
+  <%= @premise.centre_id %>
+</p>
+
+<%= link_to 'Edit', edit_premise_path(@premise) %> |
+<%= link_to 'Back', premises_path %>

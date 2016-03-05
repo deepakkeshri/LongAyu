@@ -1,0 +1,42 @@
+<div class="row" style="color:#ff0000 ; background:#cccccc ; padding:20px; margin:0px;"%>
+	<div class="col-md-4 offset2">
+	</div>
+	<% if can? :create, Centre %>
+		<%= link_to "Add Branch", branch_sign_up_path %>
+	<% end %>
+	<%= form_tag import_services_path, enforce_utf8: true ,miultipart: true do |f| %>
+		<%= label_tag :file,'Add Services'%>
+		<%= file_field_tag :file %>
+		<%= submit_tag "Import"%>
+	<% end %>
+	<h3>Branches</h3>
+	<div class="col-md-8 offset2">
+		<% @centres.each do |centre| %>
+			<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+				<table>
+					<strong>Name:</strong>
+					<% if can? :show, Centre %>
+						<%= link_to centre.name , centre_path(centre) %>
+					<% end %><br>
+					<strong>Centre Type:</strong><%= centre.centre_type.name %><br>
+			      	<strong>Email:</strong><%= centre.account.email %><br>
+			      	<strong>Mobile: </strong><%= centre.account.mobile %><br>
+			      	
+			      	<% if can? :show, Service %>
+			    	  	<%= link_to "Services", branch_services_path(centre) %>
+			    	<% end %>
+			    	<% if can? :show, Facility %>
+			    	  	<%= link_to 'Facilities', branch_facilities_path(centre)%>
+			    	<% end %><br>
+			      	<% if can? :edit, Centre  %>
+			    	  	<%= link_to "Edit", edit_centre_path(centre) %>
+			    	<% end %>
+			    	<% if can? :destroy, Centre %>
+			    	  	<%= link_to 'Delete', centre_path(centre), method: :delete,data: { confirm: 'Are you sure?'}%>
+			    	<% end %>
+				</table>
+			</div><hr>
+		<% end %>
+	</div>
+</div>
+  

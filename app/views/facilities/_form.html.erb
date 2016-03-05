@@ -1,0 +1,54 @@
+<div class="row" style="color:#ff0000 ; background:#aacccc ; padding:50px; margin:0px;" %>
+	<%= link_to '<<Back', :back %>
+	<div class="col-md-1 offset2">
+	</div>
+	<h2> Facility</h2>
+	
+	<% if @facility.errors.any? %>
+	  	<div id="error_explanation">
+	    	<h2><%= pluralize(@facility.errors.count, "error") %> prohibited from being saved:</h2>
+	    	<ul>
+	    		<% @facility.errors.full_messages.each do |msg| %>
+	      			<li><%= msg %></li>
+	    		<% end %>
+	    	</ul>
+	  	</div>
+  	<% end %>
+		
+	<div class="col-md-4 offset2">
+		<%= form_for @facility do |f| %>
+			<div class="row" style="color:#ff0000 ; background:#77ddff ; padding:20px; margin:0px;" %>
+				<table>
+					<em>fields marked with (*) are cumpulsory</em>
+					<h3>Details</h3></br>
+					
+				  	<%= f.label :branch, class: 'required' %>
+					<% if current_account.has_role? 'branch' %>
+					 	<%= f.collection_select :centre_id, [current_account.centre],:id,:name, disabled: true%>
+					<% elsif %>
+					  	<%= f.collection_select :centre_id, current_account.centre.centres.order(:name),:id,:name, :prompt=> "Select" %><br>
+					<% end %><br>
+					 					
+				  	<%= f.label :facility_type %>
+					<%= f.collection_select :facility_type_id, FacilityType.order(:name),:id,:name, default: "Select" %><br>
+				  
+					<%= f.label :name , class: 'required'%><br>
+					<%= f.text_field :name %><br>
+					
+					<%= f.label :price , class: 'required'%><br>
+					<%= f.number_field :price %><br>
+					
+					<%= f.label :timing %><br>
+					<%= f.time_select :start_time,ampm: true %>to
+					<%= f.time_select :end_time ,ampm: true%><br>
+					
+				    <%= f.label :description %><br>
+				    <%= f.text_area :description %><br>
+					  
+					
+					<%= f.submit %>
+				</table>
+			</div>
+		<% end %>
+	</div>
+</div>
